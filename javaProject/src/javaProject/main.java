@@ -31,6 +31,8 @@ public class main {
 		stc.testCases();
 	    
 		
+		
+		
 		 
 		
 	}
