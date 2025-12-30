@@ -18,11 +18,6 @@ public class Student {
     @Qualifier("pen")
     public Writer writer;
 
-    @Autowired
-    public Pencil pencil;
-
-    @Autowired
-    public Pen pen;
 
 //    public Student(String name, Writer writer, Pencil pencil) {
 //        System.out.println("Calling student constructor");
