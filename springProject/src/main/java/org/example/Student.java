@@ -3,14 +3,11 @@ package org.example;
 public class Student {
 
     private String name;
-    private Teacher teacher;
+    public Writer writer;
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setWriter(Writer writer) {
+        this.writer = writer;
     }
 
     public String getName() {
@@ -21,7 +18,8 @@ public class Student {
         this.name = name;
     }
 
-    public Student(){
-        System.out.println("Inside Student constructor");
+    public void writeExam(){
+        writer.write();
     }
+
 }

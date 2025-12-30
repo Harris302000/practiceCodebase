@@ -20,6 +20,12 @@ public class App
         String name = student.getName();
         System.out.println("name::"+name);
 
+        student.writeExam();
+
+
+
+
+
 
     }
 }

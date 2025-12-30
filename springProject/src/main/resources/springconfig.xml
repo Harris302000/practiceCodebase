@@ -6,11 +6,16 @@
 
     <bean id="s1" class = "org.example.Student">
         <property name="name" value="Agnes"/>
-        <property name="teacher" ref="tea1"/>
+        <property name="writer" ref="p1"/>
+<!--        <property name="pencil" ref="pc1"/>-->
     </bean>
 
-    <bean id="tea1" class = "org.example.Teacher">
+    <bean id="p1" class = "org.example.Pen">
 
+    </bean>
+
+    <bean id="pc1" class = "org.example.Pencil">
+        <property name = "pencilName" value="Natraj"/>
     </bean>
 
 </beans>
