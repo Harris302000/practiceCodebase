@@ -4,18 +4,14 @@ public class Student {
 
     private String name;
     public Writer writer;
+    public Pencil pencil;
 
-
-    public void setWriter(Writer writer) {
-        this.writer = writer;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Student(String name, Writer writer, Pencil pencil) {
+        System.out.println("Calling student constructor");
         this.name = name;
+        this.writer = writer;
+        this.pencil = pencil;
+
     }
 
     public void writeExam(){

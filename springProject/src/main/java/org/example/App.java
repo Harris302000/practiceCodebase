@@ -17,10 +17,8 @@ public class App
 
         Student student = (Student) context.getBean("s1");
 
-        String name = student.getName();
-        System.out.println("name::"+name);
-
         student.writeExam();
+        System.out.println("PencilName::"+student.pencil.getPencilName());
 
 
 
