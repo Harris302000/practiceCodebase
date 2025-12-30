@@ -28,6 +28,7 @@ public class main {
 		System.out.println("Hello world!!!");
 		
 		streamTestCases stc = new streamTestCases();
+		stc.setAge(4);
 		stc.testCases();
 	    
 		

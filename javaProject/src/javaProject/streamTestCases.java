@@ -34,10 +34,9 @@ public class streamTestCases {
 
 		
 		List<String> distinctList = numbers.stream().distinct().collect(Collectors.toList());
-		int sumValue = numbers.stream().distinct().mapToInt(Integer::parseInt).filter(num -> num % 2 == 0).sum();
+		double sumValue = numbers.stream().distinct().mapToInt(Integer::parseInt).filter(num -> num % 2 == 0).average().orElse(0.0);
 		System.out.println("Sumvalue::"+sumValue);
 		System.out.println("distinctList::"+distinctList);
-		
 		
 		
 		List < String > colors = Arrays.asList("Red", "Green", "Blue", "Pink", "Brown", "Blue","Red");
@@ -51,8 +50,10 @@ public class streamTestCases {
 	    System.out.println("descOrder::"+descOrder);
 	    
 	    
-	    long count = colors.stream().count();
-	    System.out.println("count::"+count);
+		List<String> arr = colors.stream().limit(getAge()).peek(u -> System.out.println("Before: " + u))
+				.map(u -> u+1)
+				.peek(u -> System.out.println("After: " + u)).collect(Collectors.toList());
+	    System.out.println(arr);
 	    
 		
 	}
