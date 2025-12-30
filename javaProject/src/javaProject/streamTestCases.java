@@ -1,5 +1,6 @@
 package javaProject;
 
+import java.awt.font.NumericShaper.Range;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -50,6 +51,8 @@ public class streamTestCases {
 	    System.out.println("descOrder::"+descOrder);
 	    
 	    
+	    long count = colors.stream().count();
+	    System.out.println("count::"+count);
 	    
 		
 	}
