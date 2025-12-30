@@ -1,27 +1,39 @@
 package org.example;
 
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
 public class Student {
 
+    @Value("Agnes")
     private String name;
-    private Teacher teacher;
 
-    public Teacher getTeacher() {
-        return teacher;
+    @Autowired
+    @Qualifier("pen")
+    public Writer writer;
+
+    @Autowired
+    public Pencil pencil;
+
+    @Autowired
+    public Pen pen;
+
+//    public Student(String name, Writer writer, Pencil pencil) {
+//        System.out.println("Calling student constructor");
+//        this.name = name;
+//        this.writer = writer;
+//        this.pencil = pencil;
+//
+//    }
+
+    public void writeExam(){
+        writer.write();
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Student(){
-        System.out.println("Inside Student constructor");
-    }
 }

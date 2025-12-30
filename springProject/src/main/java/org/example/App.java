@@ -1,6 +1,8 @@
 package org.example;
 
+import org.example.configurations.PackConfigurations;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -13,12 +15,19 @@ public class App
     {
         System.out.println( "Hello World!" );
         //Student student = new Student();
-        ApplicationContext context = new ClassPathXmlApplicationContext("springconfig.xml");
+//        ApplicationContext context = new ClassPathXmlApplicationContext("springconfig.xml");
 
-        Student student = (Student) context.getBean("s1");
+        ApplicationContext context = new AnnotationConfigApplicationContext(PackConfigurations.class);
 
-        String name = student.getName();
-        System.out.println("name::"+name);
+        Student student = (Student) context.getBean("student");
+
+        System.out.println("Name::"+student.getName());
+        student.writeExam();
+        System.out.println("PencilName::"+student.pencil.getPencilName());
+
+
+
+
 
 
     }
