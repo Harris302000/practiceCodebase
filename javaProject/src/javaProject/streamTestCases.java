@@ -48,6 +48,9 @@ public class streamTestCases {
 	    
 	    List<String> descOrder = colors.stream().distinct().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 	    System.out.println("descOrder::"+descOrder);
+	    
+	    
+	    
 		
 	}
 	
