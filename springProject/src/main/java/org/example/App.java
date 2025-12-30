@@ -23,7 +23,7 @@ public class App
 
         System.out.println("Name::"+student.getName());
         student.writeExam();
-        System.out.println("PencilName::"+student.pencil.getPencilName());
+       // System.out.println("PencilName::"+student.pencil.getPencilName());
 
 
 
