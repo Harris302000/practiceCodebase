@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class Pencil implements  Writer{
 
     public Pencil(String pencilName) {
+
         this.pencilName = pencilName;
     }
 
@@ -19,6 +20,7 @@ public class Pencil implements  Writer{
         System.out.println("Calling Pencil constructor");
     }
     public void write() {
+
         System.out.println("Writing using pencil");
     }
 }
