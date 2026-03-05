@@ -27,7 +27,7 @@ public class Student {
 
 	
 	public Student () {
-		System.out.println("Calling Student Constructor");;
+		System.out.println("Calling Student Constructor");
 	}
 	
 	

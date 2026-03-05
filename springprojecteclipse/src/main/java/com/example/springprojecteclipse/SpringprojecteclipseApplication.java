@@ -8,15 +8,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.example.StudentTest.Student;
 
 
-//@SpringBootApplication
+@SpringBootApplication
 public class SpringprojecteclipseApplication {
 
 	public static void main(String[] args) {
-//		SpringApplication.run(SpringprojecteclipseApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringprojecteclipseApplication.class,args);
 		
-		ApplicationContext context = new AnnotationConfigApplicationContext(PackConfigurations.class);
+		 System.out.println( "Hello World!" );
 		
-		Student student = (Student) context.getBean("student");
+		Student s1 = (Student) context.getBean("student");
+		s1.setName("Agnes Harris");
+		s1.setAge(25);
+		
+		System.out.println(s1.getName()+" - "+s1.getAge());
+		
 		
 	}
 
