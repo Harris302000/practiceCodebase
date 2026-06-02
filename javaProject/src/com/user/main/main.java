@@ -95,7 +95,7 @@ public class main {
 	public static void threadtestcalling() {
 		
 		ThreadTestCases TTC = new ThreadTestCases();
-//		TTC.ThreadMethod();
+		TTC.ThreadMethod();
 	}
 	
 	
