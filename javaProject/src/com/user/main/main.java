@@ -12,10 +12,16 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 import java.util.function.DoubleToIntFunction;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.user.interfaces.defaultInterfaces;
 import com.user.interfaces.sumInterface;
 import com.user.lists.LinkedList;
 import com.user.lists.MyArrayList;
@@ -31,50 +37,35 @@ public class main {
 	 * @param args
 	 * @author Agnes Harris Fernando
 	 */
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		
+
 		System.out.println("Hello world!!!");
-		
-		MyArrayList<Integer> list1 = new MyArrayList<>();
-		
-		List<Integer> list =new ArrayList<>();
+
+		// MyArrayList<Integer> list1 = new MyArrayList<>();
+
+		List<Integer> list = new ArrayList<>();
 		list.add(1);
 		list.add(0);
 		list.add(2);
 		list.add(0);
 		list.add(3);
 		list.add(0);
-		
+
 		streamtestcalling(list);
-		
+
 		threadtestcalling();
-		
+
 		linkedListtestcalling();
-	
-		
-		
-		mathOperations math = new mathOperations();
-		
-		int sum = math.addNumbers(0, 2);
-		System.out.println("sum::"+sum);
-		
-		
-		for(int i=1;i<=5;i++) {
-			math.debitAmount(i*i);
-		}
-		
-		math.checkbalance();
-		
-		
+
+		interfacetestcalling();
+
 	}
-	
+
 	public static void streamtestcalling(List<Integer> list) {
-		List<String> listSTR = List.of("Flower","Flight","Flow");
-		
+		List<String> listSTR = List.of("Flower", "Flight", "Flow");
+
 		streamTestCases stc = new streamTestCases();
 //		stc.setAge(4);
 //		stc.testCases();
@@ -90,21 +81,18 @@ public class main {
 		stc.findMaxSubStringWithoutRepeatedChars();
 		stc.maxSubArray();
 	}
-	
-	
+
 	public static void threadtestcalling() {
-		
+
 		ThreadTestCases TTC = new ThreadTestCases();
 		TTC.ThreadMethod();
 	}
-	
-	
+
 	public static void linkedListtestcalling() {
 		LinkedList LL = new LinkedList(4);
+		int[] numbers = { 100, 101, 102 };
 
-		LL.append(100);
-		LL.append(101);
-		LL.append(102);
+		Arrays.stream(numbers).forEach(s -> LL.append(s));
 
 		System.out.println("Value removed::" + LL.removeLast().value);
 
@@ -121,58 +109,81 @@ public class main {
 		System.out.println("Get value::" + LL.get(0).value);
 
 	}
-	
+
+	public static void interfacetestcalling() {
+		
+		defaultInterfaces defaultIF = new defaultInterfaces();
+		
+		sumInterface sumIF = (a, b) -> a + b;
+
+		mathOperations math = new mathOperations();
+
+		int sum = math.addNumbers(0, 2);
+		System.out.println("sum::" + sum);
+
+		sum = sumIF.addNumbers(sum, sum);
+		System.out.println("sum::" + sum);
+
+		for (int i = 1; i <= 5; i++) {
+			math.debitAmount(i * i);
+		}
+
+		math.checkbalance();
+		
+		
+		defaultIF.checkAge.accept(22);;
+		System.out.println(defaultIF.alert.get());
+		System.out.println(defaultIF.checkAccountNumber.apply("123456789098"));
+		System.out.println(defaultIF.namecheck.test("Agnes Harris"));
+
+	}
 
 }
 
-
 class mathOperations extends cardetails implements sumInterface {
 
-	
 	private double totalamount;
-	
-	mathOperations(){
+
+	mathOperations() {
 		totalamount = 0;
 	}
-	
-	
+
 	@Override
 	public int addNumbers(int a, int b) {
 		// TODO Auto-generated method stub
 		operationType("Sum of two numbers");
 		return a + b;
-		
+
 	}
 
 	@Override
 	public void debitAmount(double amount) {
 		// TODO Auto-generated method stub
-		
-		System.out.println("Amount Debited ::"+amount);
-		
-		totalamount = totalamount+amount;
-		
-		System.out.println("Balance Amount ::"+totalamount);
-		
+
+		System.out.println("Amount Debited ::" + amount);
+
+		totalamount = totalamount + amount;
+
+		System.out.println("Balance Amount ::" + totalamount);
+
 	}
 
 	@Override
 	void checkbalance() {
 		// TODO Auto-generated method stub
-		
+
 		System.out.println("Checking balance Amount...............");
-		
-		System.out.println("Balance Amount ::"+totalamount);
-		
+
+		System.out.println("Balance Amount ::" + totalamount);
+
 	}
-	
+
 }
 
-
 abstract class cardetails {
-	
+
 	abstract void debitAmount(double amount);
-	
+
 	abstract void checkbalance();
 
 }
