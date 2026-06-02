@@ -16,6 +16,12 @@ import java.util.function.DoubleToIntFunction;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.user.interfaces.sumInterface;
+import com.user.lists.LinkedList;
+import com.user.lists.MyArrayList;
+import com.user.streams.streamTestCases;
+import com.user.thread.ThreadTestCases;
+
 /**
  * 
  */
@@ -43,7 +49,30 @@ public class main {
 		list.add(3);
 		list.add(0);
 		
+		streamtestcalling(list);
 		
+		threadtestcalling();
+		
+		linkedListtestcalling();
+	
+		
+		
+		mathOperations math = new mathOperations();
+		
+		int sum = math.addNumbers(0, 2);
+		System.out.println("sum::"+sum);
+		
+		
+		for(int i=1;i<=5;i++) {
+			math.debitAmount(i*i);
+		}
+		
+		math.checkbalance();
+		
+		
+	}
+	
+	public static void streamtestcalling(List<Integer> list) {
 		List<String> listSTR = List.of("Flower","Flight","Flow");
 		
 		streamTestCases stc = new streamTestCases();
@@ -59,14 +88,91 @@ public class main {
 		stc.primeNumber();
 		stc.findFreqencyOfChar();
 		stc.findMaxSubStringWithoutRepeatedChars();
-		
-		
-		
+		stc.maxSubArray();
+	}
+	
+	
+	public static void threadtestcalling() {
 		
 		ThreadTestCases TTC = new ThreadTestCases();
-//		TTC.ThreadMethod();;
-		 
+//		TTC.ThreadMethod();
+	}
+	
+	
+	public static void linkedListtestcalling() {
+		LinkedList LL = new LinkedList(4);
+
+		LL.append(100);
+		LL.append(101);
+		LL.append(102);
+
+		System.out.println("Value removed::" + LL.removeLast().value);
+
+		LL.prepend(1);
+
+		LL.insert(2, 0);
+
+		LL.reverse();
+
+		LL.printLinkedList();
+
+		LL.getLength();
+
+		System.out.println("Get value::" + LL.get(0).value);
+
+	}
+	
+
+}
+
+
+class mathOperations extends cardetails implements sumInterface {
+
+	
+	private double totalamount;
+	
+	mathOperations(){
+		totalamount = 0;
+	}
+	
+	
+	@Override
+	public int addNumbers(int a, int b) {
+		// TODO Auto-generated method stub
+		operationType("Sum of two numbers");
+		return a + b;
 		
 	}
+
+	@Override
+	public void debitAmount(double amount) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Amount Debited ::"+amount);
+		
+		totalamount = totalamount+amount;
+		
+		System.out.println("Balance Amount ::"+totalamount);
+		
+	}
+
+	@Override
+	void checkbalance() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Checking balance Amount...............");
+		
+		System.out.println("Balance Amount ::"+totalamount);
+		
+	}
+	
+}
+
+
+abstract class cardetails {
+	
+	abstract void debitAmount(double amount);
+	
+	abstract void checkbalance();
 
 }
