@@ -19,8 +19,10 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import com.user.genericfunctions.databaseConnection;
 import com.user.interfaces.defaultInterfaces;
 import com.user.interfaces.sumInterface;
 import com.user.lists.LinkedList;
@@ -31,13 +33,9 @@ import com.user.thread.ThreadTestCases;
 /**
  * 
  */
-public class main {
+public class main{
 
-	/**
-	 * @param args
-	 * @author Agnes Harris Fernando
-	 */
-
+			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -45,15 +43,13 @@ public class main {
 
 		// MyArrayList<Integer> list1 = new MyArrayList<>();
 
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(0);
-		list.add(2);
-		list.add(0);
-		list.add(3);
-		list.add(0);
+		databaseConnection DBconnect = new databaseConnection();
 
-		streamtestcalling(list);
+		List<List<String>> result = DBconnect.getdatafromdb("select * from students");
+
+		System.out.println("result::" + result);
+
+		streamtestcalling();
 
 		threadtestcalling();
 
@@ -63,8 +59,12 @@ public class main {
 
 	}
 
-	public static void streamtestcalling(List<Integer> list) {
+	public static void streamtestcalling() {
 		List<String> listSTR = List.of("Flower", "Flight", "Flow");
+		
+		List<Integer> list = new ArrayList<>();
+		int[] numbers = {1,0,2,0,3,0};
+		Arrays.stream(numbers).forEach(i -> list.add(i));
 
 		streamTestCases stc = new streamTestCases();
 //		stc.setAge(4);
@@ -111,9 +111,9 @@ public class main {
 	}
 
 	public static void interfacetestcalling() {
-		
+
 		defaultInterfaces defaultIF = new defaultInterfaces();
-		
+
 		sumInterface sumIF = (a, b) -> a + b;
 
 		mathOperations math = new mathOperations();
@@ -124,19 +124,18 @@ public class main {
 		sum = sumIF.addNumbers(sum, sum);
 		System.out.println("sum::" + sum);
 
-		for (int i = 1; i <= 5; i++) {
-			math.debitAmount(i * i);
-		}
+		IntStream.rangeClosed(1, 5).forEach(i -> math.debitAmount(i * i));
 
 		math.checkbalance();
-		
-		
-		defaultIF.checkAge.accept(22);;
+
+		defaultIF.checkAge.accept(22);
+		;
 		System.out.println(defaultIF.alert.get());
 		System.out.println(defaultIF.checkAccountNumber.apply("123456789098"));
 		System.out.println(defaultIF.namecheck.test("Agnes Harris"));
 
 	}
+
 
 }
 
