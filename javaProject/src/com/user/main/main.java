@@ -33,7 +33,7 @@ import com.user.thread.ThreadTestCases;
 /**
  * 
  */
-public class main{
+public class main extends leetcodeProblems{
 
 			
 	public static void main(String[] args) {
@@ -41,21 +41,28 @@ public class main{
 
 		System.out.println("Hello world!!!");
 
+		
+		boolean testFlag = false;
+		boolean leetCodeFlag =true;
+		
 		// MyArrayList<Integer> list1 = new MyArrayList<>();
 
-		databaseConnection DBconnect = new databaseConnection();
-
-		List<List<String>> result = DBconnect.getdatafromdb("select * from students");
-
-		System.out.println("result::" + result);
-
-		streamtestcalling();
-
-		threadtestcalling();
-
-		linkedListtestcalling();
-
-		interfacetestcalling();
+		if (testFlag) {
+			databaseConnection DBconnect = new databaseConnection();
+			List<List<String>> result = DBconnect.getdatafromdb("select * from students");
+			System.out.println("result::" + result);
+			streamtestcalling();
+			threadtestcalling();
+			linkedListtestcalling();
+			interfacetestcalling();
+		}
+		
+		
+		if (leetCodeFlag) {
+			System.out.println("Testing leetcodeProblems");
+			leetcodeProblems lcProb = new leetcodeProblems();
+			lcProb.leetcodemain();
+		}
 
 	}
 
