@@ -9,6 +9,11 @@ public class leetcodeProblems {
 		// TODO Auto-generated method stub
 		String s = "   fly me   to   the moon  ";
 		System.out.println("lengthOfLastWord::"+lengthOfLastWord(s));
+		
+		int [] a = {9,8,7,6,5,4,3,2,1,0};
+		int [] b = {1,3,0};
+		System.out.println("lengthOfLastWord::"+lengthOfLastWord(s));
+		System.out.println("plusOne::"+plusOne(b));
 	}
 	
 	
@@ -38,11 +43,33 @@ public class leetcodeProblems {
 	}
 	
 	
+
 	public int[] plusOne(int[] digits) {
 
-	        
-	        
-	        return digits;
-	    }
+		int result = 0;
+		for (int digit : digits) {
+			result = result * 10 + digit;
+		}
+
+		System.out.println(result);
+		result +=1;
+		System.out.println(result);
+		
+		String resultSTR = Integer.toString(result);
+		
+		int i = resultSTR.length();
+		
+		int[] resArr = new int [resultSTR.length()];
+		
+		while (i != 0) {
+			int divresult = result % 10;
+			result = result / 10;
+			i--;
+			resArr[i] = divresult;
+			
+		}
+		
+		return resArr;
+	}
 
 }
