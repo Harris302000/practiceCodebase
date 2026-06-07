@@ -1,7 +1,11 @@
 package com.user.main;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class leetcodeProblems {
 
@@ -14,6 +18,13 @@ public class leetcodeProblems {
 		int [] b = {1,3,0};
 		System.out.println("lengthOfLastWord::"+lengthOfLastWord(s));
 		System.out.println("plusOne::"+plusOne(b));
+		
+		String pattern =
+				"abba";
+		String 	s1 =
+				"dog cat cat dog";
+		
+		wordPattern(pattern, s1);
 	}
 	
 	
@@ -46,30 +57,77 @@ public class leetcodeProblems {
 
 	public int[] plusOne(int[] digits) {
 
-		int result = 0;
-		for (int digit : digits) {
-			result = result * 10 + digit;
+		for (int i = digits.length - 1; i >= 0; i--) {
+
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+
+            digits[i] = 0;
+        }
+
+        int[] result = new int[digits.length + 1];
+        result[0] = 1;
+
+        return result; 
+	}
+	
+	public void moveZeroes(int[] nums) {
+
+		
+		int insertPos = 0;
+
+	    for (int num : nums) {
+	        if (num != 0) {
+	            nums[insertPos++] = num;
+	        }
+	    }
+
+	    while (insertPos < nums.length) {
+	        nums[insertPos++] = 0;
+	    }
+
+	}
+	
+	
+	public boolean wordPattern(String pattern, String s) {
+		HashMap<Character, String> a = new HashMap<Character, String>();
+		a.put('a', "dog");
+		a.put('b', "cat");
+
+		
+		
+		System.out.println("Hashmap::"+a.get("a"));
+		System.out.println("value at::"+pattern.valueOf(pattern.charAt(0)));
+		String[] Sarr = s.split(" ");
+
+		if (pattern.length() != Sarr.length) {
+			return false;
 		}
 
-		System.out.println(result);
-		result +=1;
-		System.out.println(result);
-		
-		String resultSTR = Integer.toString(result);
-		
-		int i = resultSTR.length();
-		
-		int[] resArr = new int [resultSTR.length()];
-		
-		while (i != 0) {
-			int divresult = result % 10;
-			result = result / 10;
-			i--;
-			resArr[i] = divresult;
+		int x = 0;
+
+		while (x != pattern.length()) {
 			
+			char alphabet = pattern.charAt(x);
+			System.out.println("character::"+a.get(alphabet));
+			
+			if(!a.containsKey(alphabet)) {
+				return false;
+			}
+			
+			String val = a.get(alphabet);
+
+			if (!val.equals(Sarr[x])) {
+				return false;
+			}
+
+			x++;
 		}
-		
-		return resArr;
+
+		return true;
+
 	}
 
 }
