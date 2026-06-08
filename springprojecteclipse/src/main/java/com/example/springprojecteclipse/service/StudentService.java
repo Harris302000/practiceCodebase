@@ -15,6 +15,7 @@ public class StudentService {
 
 	@Autowired
 	private StudentRepository studentRepository;
+	
 
 	public Student getStudentById(String id) {
 
@@ -43,6 +44,7 @@ public class StudentService {
 		if (existingStudent == null) {
 			return null;
 		}
+		
 
 		if (student.getName() != null) {
 			existingStudent.setName(student.getName());
@@ -53,6 +55,19 @@ public class StudentService {
 		}
 
 		return studentRepository.save(existingStudent);
+	}
+	
+	
+	public List<Student> insertStudent(List<Student> student) {
+
+		
+		for (Student s : student) {
+			if (studentRepository.existsById(s.getId())) {
+				return null;
+			}
+		}
+
+		return studentRepository.saveAll(student);
 	}
 
 }

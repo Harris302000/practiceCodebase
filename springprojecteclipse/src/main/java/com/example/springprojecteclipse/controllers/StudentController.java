@@ -25,33 +25,35 @@ import com.example.springprojecteclipse.repository.StudentRepository;
 @RestController
 public class StudentController {
 
-	 @Autowired
-	  StudentService studentService;
-	 	
-	 @PostMapping("/student")
-	 public ResponseEntity<Student> createStudent(@Valid @RequestBody Student student) {
-	     return ResponseEntity.ok(student);
-	 }
-    
-    @PutMapping("/student/{id}")
-    public ResponseEntity<?> updateStudent(@PathVariable int id, @RequestBody Student student) {
-        
-    	
-    	Student updatedStudent =
-                studentService.updateStudent(student);
+	@Autowired
+	StudentService studentService;
 
-        if(updatedStudent == null) {
-            return ResponseEntity.notFound().build();
-        }
+	@PostMapping("/student/add")
+	public ResponseEntity<?> createStudent(@Valid @RequestBody List<Student> student) {
+		
+		
+		List<Student> insertStudent = studentService.insertStudent(student);
+		if (insertStudent == null) {
+			return ResponseEntity.ok("Data already present with same ID");
+		}
+		
+		return ResponseEntity.ok("Data inserted successfully");
+	}
 
-        return ResponseEntity.ok(updatedStudent);
-    	
-//    	return "Student updated with id " + id;
-    }
-    
-   
-     
-    @DeleteMapping("/student/{id}")
+	@PutMapping("/student")
+	public ResponseEntity<?> updateStudent(@Valid @RequestBody Student student) {
+
+		Student updatedStudent = studentService.updateStudent(student);
+
+		if (updatedStudent == null) {
+			return ResponseEntity.ok("No data found");
+		}
+
+		return ResponseEntity.ok("Data Updated successfully");
+
+	}
+
+	@DeleteMapping("/student/{id}")
 	public ResponseEntity<?> deleteStudent(@PathVariable String id) {
 
 		Student student = studentService.getStudentById(id);
@@ -67,10 +69,10 @@ public class StudentController {
 		String msg = "Student data got deleted successfully. Name:" + name + " ID:" + id;
 
 		return ResponseEntity.ok(msg);
+		
 	}
 
-	
-    @GetMapping("/student/{id}")
+	@GetMapping("/student/{id}")
 	public ResponseEntity<Student> getStudentById(@PathVariable String id) {
 
 		Student student = studentService.getStudentById(id);
@@ -84,13 +86,13 @@ public class StudentController {
 
 	@GetMapping("/students")
 	public ResponseEntity<?> getAllStudents() {
-	    
+
 		List<Student> data = studentService.getAllStudent();
-		
+
 		if (data.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No Data Found");
 		}
-		
+
 		return ResponseEntity.ok(data);
 	}
 }
