@@ -2,20 +2,57 @@ package com.example.springprojecteclipse.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.springprojecteclipse.model.Student;
+import com.example.springprojecteclipse.repository.StudentRepository;
 
 @Service
 public class StudentService {
-	
-	public List<String> getStudent() {
-		
-		System.out.println("Student Service Called");
 
-		List<String> students = new ArrayList<>();
-        students.add("Agnes");
-        students.add("John");
-        students.add("David");
-        return students;
-    }
+	@Autowired
+	private StudentRepository studentRepository;
+
+	public Student getStudentById(String id) {
+
+		Optional<Student> student = studentRepository.findById(id);
+
+		return student.orElse(null);
+	}
+
+	public List<Student> getAllStudent() {
+
+		List<Student> student = studentRepository.findAll();
+
+		return student;
+	}
+
+	public void deleteStudentById(String id) {
+
+		studentRepository.deleteById(id);
+
+	}
+
+	public Student updateStudent(Student student) {
+
+		Student existingStudent = studentRepository.findById(student.getId()).orElse(null);
+
+		if (existingStudent == null) {
+			return null;
+		}
+
+		if (student.getName() != null) {
+			existingStudent.setName(student.getName());
+		}
+
+		if (student.getAge() != null) {
+			existingStudent.setAge(student.getAge());
+		}
+
+		return studentRepository.save(existingStudent);
+	}
+
 }
