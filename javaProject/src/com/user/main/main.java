@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import com.user.builderdesignpattern.myComputer;
 import com.user.genericfunctions.databaseConnection;
 import com.user.interfaces.defaultInterfaces;
 import com.user.interfaces.sumInterface;
@@ -29,6 +30,7 @@ import com.user.lists.LinkedList;
 import com.user.lists.MyArrayList;
 import com.user.streams.streamTestCases;
 import com.user.thread.ThreadTestCases;
+
 
 /**
  * 
@@ -42,13 +44,13 @@ public class main extends leetcodeProblems{
 		System.out.println("Hello world!!!");
 
 		
-		boolean testFlag = false;
-		boolean leetCodeFlag =true;
+		boolean testFlag = true;
+		boolean leetCodeFlag =false;
 		
 		// MyArrayList<Integer> list1 = new MyArrayList<>();
 
 		if (testFlag) {
-			databaseConnection DBconnect = new databaseConnection();
+			databaseConnection DBconnect = databaseConnection.getInstance();
 			List<List<String>> result = DBconnect.getdatafromdb("select * from students");
 			System.out.println("result::" + result);
 			streamtestcalling();
@@ -63,7 +65,16 @@ public class main extends leetcodeProblems{
 			leetcodeProblems lcProb = new leetcodeProblems();
 			lcProb.leetcodemain();
 		}
-
+		
+		
+//		myComputer myCom = new myComputer("1TB","24 GB","Version  10.3","510 MB",false);
+		myComputer myCom = new myComputer.computerbuilder("1TB","24 GB")
+				.addBluetooth(true)
+				.build();
+		System.out.println(myCom.toString());
+		 
+		
+		
 	}
 
 	public static void streamtestcalling() {
@@ -93,6 +104,12 @@ public class main extends leetcodeProblems{
 
 		ThreadTestCases TTC = new ThreadTestCases();
 		TTC.ThreadMethod();
+		
+		ThreadTestCases TTC1 = new ThreadTestCases();
+		TTC1.ThreadMethod();
+		
+		ThreadTestCases TTC2 = new ThreadTestCases();
+		TTC2.ThreadMethod();
 	}
 
 	public static void linkedListtestcalling() {

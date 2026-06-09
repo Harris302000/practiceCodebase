@@ -15,11 +15,19 @@ public class ThreadTestCases {
 		Runnable printOdd = () ->{
 			
 			System.out.println("Ok");
-			for(int i=0;i<5;i++) {
+//			for(int i=0;i<5;i++) {
+			int i=0;
+			boolean flag = true;
+			while(flag) {
 				
 				synchronized (ThreadTestCases.class) {
 					LocalDateTime currentDateTime = LocalDateTime.now();
 					System.out.println("Value::"+i+"::"+Thread.currentThread().getName()+"Time::"+currentDateTime);
+					i++;
+					
+					if(i==5) {
+						flag=false;
+					}
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
@@ -36,10 +44,6 @@ public class ThreadTestCases {
 		CC.submit(printOdd);
 		
 		CC.shutdown();
-		
-		
-		
-	    
 		
 	}
 
