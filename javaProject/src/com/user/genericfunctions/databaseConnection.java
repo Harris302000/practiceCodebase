@@ -9,6 +9,19 @@ import java.util.List;
 
 public class databaseConnection {
 	
+	private static databaseConnection instance;
+
+	private databaseConnection() {
+	}
+
+	public static databaseConnection getInstance() {
+		if (instance == null) {
+			instance = new databaseConnection();
+		}
+		return instance;
+	}
+	
+	
 	
 	public List<List<String>> getdatafromdb(String query) {
 
