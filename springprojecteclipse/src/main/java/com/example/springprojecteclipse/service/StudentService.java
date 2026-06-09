@@ -23,6 +23,14 @@ public class StudentService {
 
 		return student.orElse(null);
 	}
+	
+	
+	public Student getStudentByIdandName(String id,String Name) {
+
+		Optional<Student> student = Optional.ofNullable(studentRepository.findStudentByIDandName(id, Name).orElse(null));
+
+		return student.orElse(null);
+	}
 
 	public List<Student> getAllStudent() {
 
@@ -40,6 +48,7 @@ public class StudentService {
 	public Student updateStudent(Student student) {
 
 		Student existingStudent = studentRepository.findById(student.getId()).orElse(null);
+		
 
 		if (existingStudent == null) {
 			return null;

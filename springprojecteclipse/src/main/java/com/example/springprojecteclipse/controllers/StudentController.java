@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springprojecteclipse.model.Student;
@@ -29,7 +31,12 @@ public class StudentController {
 	StudentService studentService;
 
 	@PostMapping("/student/add")
-	public ResponseEntity<?> createStudent(@Valid @RequestBody List<Student> student) {
+	public ResponseEntity<?> createStudent(@Valid @RequestBody List<Student> student, @RequestHeader("Authorization") String token) {
+		
+		
+		if(!token.equals("123456")) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized Access");
+		}
 		
 		
 		List<Student> insertStudent = studentService.insertStudent(student);
@@ -76,6 +83,19 @@ public class StudentController {
 	public ResponseEntity<Student> getStudentById(@PathVariable String id) {
 
 		Student student = studentService.getStudentById(id);
+
+		if (student == null) {
+			return ResponseEntity.notFound().build();
+		}
+
+		return ResponseEntity.ok(student);
+	}
+	
+	
+	@GetMapping("/student?id={id}&name={name}")
+	public ResponseEntity<Student> getStudentByIdandName(@RequestParam String id, @RequestParam String name) {
+
+		Student student = studentService.getStudentByIdandName(id, name);
 
 		if (student == null) {
 			return ResponseEntity.notFound().build();
