@@ -15,10 +15,19 @@ public class StudentService {
 
 	@Autowired
 	private StudentRepository studentRepository;
+	
 
 	public Student getStudentById(String id) {
 
 		Optional<Student> student = studentRepository.findById(id);
+
+		return student.orElse(null);
+	}
+	
+	
+	public Student getStudentByIdandName(String id,String Name) {
+
+		Optional<Student> student = Optional.ofNullable(studentRepository.findStudentByIDandName(id, Name).orElse(null));
 
 		return student.orElse(null);
 	}
@@ -39,10 +48,12 @@ public class StudentService {
 	public Student updateStudent(Student student) {
 
 		Student existingStudent = studentRepository.findById(student.getId()).orElse(null);
+		
 
 		if (existingStudent == null) {
 			return null;
 		}
+		
 
 		if (student.getName() != null) {
 			existingStudent.setName(student.getName());
@@ -53,6 +64,19 @@ public class StudentService {
 		}
 
 		return studentRepository.save(existingStudent);
+	}
+	
+	
+	public List<Student> insertStudent(List<Student> student) {
+
+		
+		for (Student s : student) {
+			if (studentRepository.existsById(s.getId())) {
+				return null;
+			}
+		}
+
+		return studentRepository.saveAll(student);
 	}
 
 }
