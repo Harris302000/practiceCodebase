@@ -67,4 +67,28 @@ public class LoginService {
 		return passwordRet;
 
 	}
+	
+	
+	public Optional<String> createNewUser(login Login){
+		
+		Optional<login> userstatus = verifyusername(Login.getUsername());
+		
+		if(userstatus != null) {
+			return Optional.of("User name already exist");
+		}
+		
+		String encodePassword = PasswordEncoder.encode(Login.getPassword());
+		Login.setPassword(encodePassword);
+		
+		loginrepository.save(Login);
+		
+		
+		return Optional.of("User created successfully");
+	}
+	
+	
+	
+	
+	
+	
 }

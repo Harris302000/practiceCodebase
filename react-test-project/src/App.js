@@ -1,5 +1,6 @@
 
 import LoginPage from "./LoginPage";
+import MessagePopup from "./components/Message.js";
 import "./App.css";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div>
       <LoginPage />
+      <MessagePopup />
     </div>
   );
   
