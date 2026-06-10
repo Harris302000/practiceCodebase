@@ -2,6 +2,7 @@ import { useState } from "react";
 import HomePage from "./components/HomePage";
 import MandatoryLabel from "./components/Mandatory";
 import { validateMandatoryFields } from "./components/Mandatory";
+import { showMessage } from "./components/Message";
 import "./customcss.css";
 
 
@@ -15,11 +16,13 @@ function Login() {
     const isValid = validateMandatoryFields();
 
     if (!isValid) {
-      alert("Please fill all mandatory fields");
+      //alert("Please fill all mandatory fields");
+      showMessage("Please fill all mandatory fields");
       return;
     }
 
-    alert("Login Successful");
+    // alert("Login Successful");
+    showMessage("Login Successful");
     setIsLoggedIn(true);
   };
 

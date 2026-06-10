@@ -41,7 +41,8 @@ public class streamTestCases {
 
 		
 		List<String> distinctList = numbers.stream().distinct().collect(Collectors.toList());
-		double sumValue = numbers.stream().distinct().mapToInt(Integer::parseInt).filter(num -> num % 2 == 0).average().orElse(0.0);
+		double sumValue = numbers.stream().distinct().mapToInt(Integer::parseInt).map(u -> u+2)
+				.filter(num -> num % 2 == 0).average().orElse(0.0);
 		System.out.println("Sumvalue::"+sumValue);
 		System.out.println("distinctList::"+distinctList);
 		
@@ -140,8 +141,10 @@ public class streamTestCases {
 		Integer [] arr2 = {4,5};
 		
 		Integer [] mergeArray = Stream.concat(Arrays.stream(arr1), Arrays.stream(arr2)).toArray(Integer[]::new);
+		List<Integer> mergeArrayInt  = Stream.concat(Arrays.stream(arr1), Arrays.stream(arr2)).collect(Collectors.toList());
 
 		System.out.println("mergeArray::"+Arrays.toString(mergeArray));
+		System.out.println("mergeArrayInt::"+mergeArrayInt);
 		
 	}
 	
@@ -190,6 +193,9 @@ public class streamTestCases {
 		.forEach((key,value) -> System.out.print(key+""+value));
 		System.out.println();
 		System.out.println("countMap::"+countMap);
+		char a =   STR.chars().mapToObj(ch -> (char) ch).collect(Collectors.groupingBy(ch -> ch,Collectors.counting())).entrySet().stream()
+				.filter(n -> n.getValue()>1).findFirst().get().getKey();
+		System.out.println("countMap::"+a);
 		
 	}
 	

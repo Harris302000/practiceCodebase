@@ -85,8 +85,8 @@ public class main extends leetcodeProblems{
 		Arrays.stream(numbers).forEach(i -> list.add(i));
 
 		streamTestCases stc = new streamTestCases();
-//		stc.setAge(4);
-//		stc.testCases();
+		stc.setAge(4);
+		stc.testCases();
 		stc.moveAllZeroToEnd(list);
 		stc.sortMapValues();
 		stc.ReverseWordAndCharacters();
