@@ -44,8 +44,9 @@ public class main extends leetcodeProblems{
 		System.out.println("Hello world!!!");
 
 		
-		boolean testFlag = true;
+		boolean testFlag = false;
 		boolean leetCodeFlag =false;
+		boolean designpattern =false;
 		
 		// MyArrayList<Integer> list1 = new MyArrayList<>();
 
@@ -67,13 +68,13 @@ public class main extends leetcodeProblems{
 		}
 		
 		
+		if (designpattern) {
+			//Builder Design pattern
 //		myComputer myCom = new myComputer("1TB","24 GB","Version  10.3","510 MB",false);
-		myComputer myCom = new myComputer.computerbuilder("1TB","24 GB")
-				.addBluetooth(true)
-				.build();
-		System.out.println(myCom.toString());
+			myComputer myCom = new myComputer.computerbuilder("1TB", "24 GB").addBluetooth(true).build();
+			System.out.println(myCom.toString());
+		}
 		 
-		
 		
 	}
 

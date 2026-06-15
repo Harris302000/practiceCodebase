@@ -31,11 +31,11 @@ public class StudentController {
 	StudentService studentService;
 
 	@PostMapping("/student/add")
-	public ResponseEntity<?> createStudent(@Valid @RequestBody List<Student> student, @RequestHeader("Authorization") String token) {
+	public ResponseEntity<?> createStudent(@Valid @RequestBody List<Student> student, @RequestHeader("Data-Add-Key") String token) {
 		
 		
 		if(!token.equals("123456")) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized Access");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized Access Add Data-Add-Key value");
 		}
 		
 		
