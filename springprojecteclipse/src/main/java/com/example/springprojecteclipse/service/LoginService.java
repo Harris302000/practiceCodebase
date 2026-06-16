@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.springprojecteclipse.model.AddressDetails;
 import com.example.springprojecteclipse.model.Login;
 import com.example.springprojecteclipse.repository.LoginRepository;
 
@@ -136,6 +137,13 @@ public class LoginService {
 		}
 		
 		
+		if (login.getAddress() != null) {
+		    for (AddressDetails address : login.getAddress()) {
+		        address.setLogin(login);
+		    }
+		}
+		
+		
 		login.setCreatedAt(datetime);
 
 		loginrepository.save(login);
@@ -146,6 +154,20 @@ public class LoginService {
 	public List<Login> getallusers() {
 
 		return loginrepository.findAll();
+	}
+	
+	public String deleteuser(String username) {
+		
+		System.out.println("deleteuser::username::"+username);
+	    Optional<Login> userdets =  verifyusername(username);
+		
+	    if(userdets == null || userdets.isEmpty()) {
+	    	return "No user data found for deletion";
+	    }
+		
+	    loginrepository.delete(userdets.get());
+		
+		return "User delete successfully";
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.example.springprojecteclipse.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "addressdetails")
@@ -36,10 +39,8 @@ public class AddressDetails {
 	private String pincode;
 	
 	@ManyToOne
-    @JoinColumn(
-        name = "fk_address",
-        referencedColumnName = "userid"
-//        unique = true
-    )
+	@JoinColumn(name = "userid")
+	@ToString.Exclude
+	@JsonIgnore
     private Login login;
 }

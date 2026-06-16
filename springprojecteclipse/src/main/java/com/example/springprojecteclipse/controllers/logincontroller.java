@@ -10,10 +10,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springprojecteclipse.genericfunctions.ResponseCreator;
@@ -61,6 +64,22 @@ public class logincontroller {
 		return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(reponse.get(), HttpStatus.OK.value()));
 	}
 
+	
+	@DeleteMapping("/admin/deleteuser")
+	public ResponseEntity<?> deleteuserRequest(@RequestParam String username) {
+
+		String reponse = loginservice.deleteuser(username);
+
+		if (reponse == null) {
+			ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body(new ResponseCreator("Error while deleting user", HttpStatus.NOT_FOUND.value()));
+		}
+
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(reponse, HttpStatus.OK.value()));
+	}
+	
+	
+	
 	@GetMapping("/admin/all-users")
 	public List<Login> getallusers() {
 
