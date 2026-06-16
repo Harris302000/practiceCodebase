@@ -21,6 +21,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "userdetails")
@@ -45,7 +46,11 @@ public class Login {
 	    )
 	private String mobileno;
 	
-	@Email(message = "Invalid email format")
+//	@Email(message = "Invalid email format")
+	@Pattern(
+	        regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+	        message = "Invalid email format"
+	    )
 	private String emailid;
 	
 	private String role;
@@ -56,7 +61,8 @@ public class Login {
 	private LocalDateTime lastLoginAt;
 	
 	@OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
-	private List<AddressDetails> addressDetails;
+	@ToString.Exclude
+	private List<AddressDetails> address;
 	
 	public Login() {
 		System.out.println("Calling login constructor");
