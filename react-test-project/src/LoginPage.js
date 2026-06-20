@@ -12,18 +12,42 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const isValid = validateMandatoryFields();
 
-    if (!isValid) {
-      //alert("Please fill all mandatory fields");
-      showMessage("Please fill all mandatory fields");
-      return;
-    }
+    try {
+      if (!isValid) {
+        //alert("Please fill all mandatory fields");
+        showMessage("Please fill all mandatory fields");
+        return;
+      }
 
-    // alert("Login Successful");
-    showMessage("Login Successful");
-    setIsLoggedIn(true);
+      const response = await fetch(
+            "http://localhost:8080/user/verifylogin",
+            {
+                method: "GET",
+                headers: {
+                    username: username,
+                    "X-Password": password
+                }
+            }
+        );
+
+      const data = await response.json();
+
+      console.log(data);
+
+      if (response.ok) {
+        // alert("Login Successful");
+        showMessage(data.response);
+        setIsLoggedIn(true);
+      } else {
+        showMessage(data.response);
+      }
+    } catch (error) {
+      console.error(error);
+      showMessage("Unable to connect to server");
+    }
   };
 
   return (
