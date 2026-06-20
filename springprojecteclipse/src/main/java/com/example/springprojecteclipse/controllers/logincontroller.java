@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @Validated
+@CrossOrigin(origins = "http://localhost:3000")
 public class logincontroller {
 
 	@Autowired
@@ -45,6 +47,12 @@ public class logincontroller {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body(new ResponseCreator("Error in fetch login details", HttpStatus.NOT_FOUND.value()));
 		}
+		
+		
+		if(!logindets.get().equalsIgnoreCase("Login successfully")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ResponseCreator(logindets.get(), HttpStatus.FORBIDDEN.value()));
+		}
+		
 
 		return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(logindets.get(), HttpStatus.OK.value()));
 	}

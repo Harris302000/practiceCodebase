@@ -77,7 +77,7 @@ public class LoginService {
 		System.out.println("userdets.get().getPassword()::" + userdets.get().getPassword());
 
 		if (PasswordEncoder.matches(password, userdets.get().getPassword())) {
-			return Optional.ofNullable("Logged in successfully");
+			return Optional.ofNullable("Login successfully");
 		}
 
 		return Optional.ofNullable("Invalid Password");

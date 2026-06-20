@@ -1,5 +1,6 @@
 package com.user.streams;
 
+import java.nio.file.DirectoryStream.Filter;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -76,7 +77,25 @@ public class StreamcasesChatGPT {
 						Collectors.maxBy(Comparator.comparing(Employee::getSalary)), Optional::get)));
 		System.out.println("highPaid::" + highPaid);
 
-		// Map<String, List<String>> twoHightPaidDpt
+		Map<String, Map<String, List<Employee>>> multigroup = employees.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.groupingBy( e -> e.getAge()<30 ?"Young" : "Senior", Collectors.toList())));
+		
+		System.out.println("multigroup::"+multigroup);
+		
+		
+		Map<String, List<String>> empList = employees.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.mapping(Employee::getName, Collectors.toList())));
+		System.out.println("empList::"+empList);
+		
+		
+		Map<String,Employee> p1 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Employee::getSalary)) ,Optional::get)));
+		
+		Map<String, Map<String, List<Employee>>> p2 = employees.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.groupingBy(e -> e.getAge()>=30?"Senior":"Junior",Collectors.toList())));
+		
+		Map<String ,List<String>> p3 = employees.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.mapping(Employee::getName, Collectors.toList())));
+ 		
 
 	}
 
