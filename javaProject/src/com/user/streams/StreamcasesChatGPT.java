@@ -95,7 +95,13 @@ public class StreamcasesChatGPT {
 		
 		Map<String ,List<String>> p3 = employees.stream()
 				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.mapping(Employee::getName, Collectors.toList())));
+		
+		
+		Map<String, Employee> p4 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Employee::getSalary)), Optional::get)));
  		
+		
+		Map<String, Map<String, List<String>>> p5 = employees.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.groupingBy(e -> e.getAge() >= 30 ?"Senior":"Junior",Collectors.mapping(Employee::getName, Collectors.toList()))));
 
 	}
 
