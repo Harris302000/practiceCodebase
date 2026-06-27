@@ -11,6 +11,8 @@ import java.util.List;
 
 import org.hibernate.grammars.hql.HqlParser.OffsetDateTimeWithMinutesContext;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +38,7 @@ public class Login {
 	private String username;
 	
 	@NotBlank(message = "Password is mandatory")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	
 	private String dob;
