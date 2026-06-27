@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.userservice.DTO.UserResponse;
 import com.example.userservice.genericfunctions.ResponseCreator;
 import com.example.userservice.model.Login;
 import com.example.userservice.service.LoginService;
@@ -89,7 +90,7 @@ public class logincontroller {
 	
 	
 	@GetMapping("/admin/all-users")
-	public List<Login> getallusers() {
+	public List<UserResponse> getallusers() {
 
 		return loginservice.getallusers();
 	}

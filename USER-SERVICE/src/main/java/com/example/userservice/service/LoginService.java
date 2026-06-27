@@ -1,6 +1,7 @@
 package com.example.userservice.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.userservice.DTO.UserResponse;
+import com.example.userservice.feignclient.OrderFeignClient;
 import com.example.userservice.model.AddressDetails;
 import com.example.userservice.model.Login;
 import com.example.userservice.repository.LoginRepository;
@@ -22,6 +25,9 @@ public class LoginService {
 
 	@Autowired
 	private BCryptPasswordEncoder PasswordEncoder;
+	
+	@Autowired
+    private OrderFeignClient orderFeignClient;
 	
 	LocalDateTime datetime =  LocalDateTime.now();
 
@@ -151,9 +157,36 @@ public class LoginService {
 		return Optional.of("User created successfully");
 	}
 
-	public List<Login> getallusers() {
+	public List<UserResponse> getallusers() {
 
-		return loginrepository.findAll();
+		
+		List<Login> users = loginrepository.findAll();
+
+        List<UserResponse> response = new ArrayList<>();
+		
+        for(Login user : users) {
+
+            UserResponse dto = new UserResponse();
+
+            dto.setUserid(user.getUserid());
+            dto.setUsername(user.getUsername());
+//            dto.setPassword(user.getPassword());
+            dto.setDob(user.getDob());
+            dto.setMobileno(user.getMobileno());
+            dto.setEmailid(user.getEmailid());
+            dto.setRole(user.getRole());
+            dto.setCreatedAt(user.getCreatedAt());
+            dto.setLastLoginAt(user.getLastLoginAt());
+            dto.setAddress(user.getAddress());
+
+            // Feign Client Call
+            Long count = orderFeignClient.getallordercountByUserID(user.getUserid(),"PLACED");
+            dto.setTotalOrders(count);
+            response.add(dto);
+
+        }
+
+        return response;
 	}
 	
 	public String deleteuser(String username) {
