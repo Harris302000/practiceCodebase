@@ -1,8 +1,10 @@
 package com.user.streams;
 
 import java.nio.file.DirectoryStream.Filter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -103,6 +105,10 @@ public class StreamcasesChatGPT {
 		Map<String, Map<String, List<String>>> p5 = employees.stream()
 				.collect(Collectors.groupingBy(Employee::getDepartment,Collectors.groupingBy(e -> e.getAge() >= 30 ?"Senior":"Junior",Collectors.mapping(Employee::getName, Collectors.toList()))));
 
+		List<String> list = new LinkedList<>();
+		
+		List<String> list2 = new ArrayList();
+	
 	}
 
 }
