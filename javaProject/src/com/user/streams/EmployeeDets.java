@@ -1,6 +1,6 @@
 package com.user.streams;
 
-public class Employee {
+public class EmployeeDets {
 	
 	private int id;
 	
@@ -13,7 +13,7 @@ public class Employee {
 	private int age;
 
 	
-	public Employee(int id, String name, String ddpt, int salary, int age) {
+	public EmployeeDets(int id, String name, String ddpt, int salary, int age) {
 		super();
 		this.id = id;
 		this.name = name;
