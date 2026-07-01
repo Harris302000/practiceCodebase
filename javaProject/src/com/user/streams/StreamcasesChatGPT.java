@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -151,6 +152,11 @@ public class StreamcasesChatGPT {
 		Predicate<String> namecheck12 = (String a) -> !a.isEmpty();
 		
 		
+		
+		
+		Map<String, Integer> p8 = customer.stream().flatMap(e -> e.getOrders().stream()).flatMap(e -> e.getItems().stream())
+				.collect(Collectors.groupingBy(OrderItem::getProduct,Collectors.summingInt(OrderItem::getQuantity)));
+		
 	}
 
 }
@@ -217,8 +223,17 @@ class Order {
 	private int orderId;
     private String product;
     private double amount;
+    
+    private List<OrderItem> items;
+    
 
-    public int getOrderId() {
+    public List<OrderItem> getItems() {
+		return items;
+	}
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
+	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderId) {
@@ -238,4 +253,26 @@ class Order {
 	}
 	
 
+}
+
+class OrderItem {
+    private String product;
+    private int quantity;
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+    
+    
+
+    // getters
 }
