@@ -54,8 +54,9 @@
 
  body {
 
-    background-image: linear-gradient(rgba(15, 14, 14, 0.4),
-                    rgba(14, 14, 14, 0.4)),url(/Images/football_img1.jpg);
+    /* background-image: linear-gradient(rgba(15, 14, 14, 0.4),
+                    rgba(14, 14, 14, 0.4)),url(/Images/football_img1.jpg); */
+   background-color: rgb(119, 119, 119);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -73,3 +74,45 @@
     
 
  }
+
+ #Header-div{
+    border-bottom: 5px groove red;
+     margin: 10px;
+     padding: 30px;
+     border-bottom-left-radius: 30px;
+     border-bottom-right-radius: 30px;
+     background-color: rgb(96, 55, 55); 
+     border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+}
+
+
+#Header-div label {
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: blanchedalmond;
+}
+
+#header-button-div button {
+    width: 70px;
+    height: 30px;
+    color: blanchedalmond;
+
+}
+
+#header-button-div{
+    float: right;
+    display: flex;  
+    gap: 40px;
+}
+
+button{
+    background-color: rgb(58, 58, 204);
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 10px;
+    border-color: blue;
+    box-sizing: content-box;
+    /* box-shadow: 0px 0px 70px black; */
+}

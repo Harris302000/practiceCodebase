@@ -157,6 +157,10 @@ public class StreamcasesChatGPT {
 		Map<String, Integer> p8 = customer.stream().flatMap(e -> e.getOrders().stream()).flatMap(e -> e.getItems().stream())
 				.collect(Collectors.groupingBy(OrderItem::getProduct,Collectors.summingInt(OrderItem::getQuantity)));
 		
+		
+		Comparator<Employee> byName =
+			    (e1, e2) -> e1.getName().compareTo(e2.getName());
+		
 	}
 
 }

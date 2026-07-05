@@ -1,0 +1,73 @@
+body{
+    background-color: rgb(35, 34, 34);
+    color: whitesmoke;
+}
+p{
+    font-size: larger;
+    color: blanchedalmond;
+}
+
+#header-div{
+    background-color: rgb(96, 55, 55); 
+    border-bottom: 5px solid red; 
+    border-bottom-right-radius: 50px; 
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+    border-bottom-style: groove; 
+    margin-top: -60px;
+    justify-items: center;
+}
+
+#header-div h1{
+    font-size: 100px; 
+    color: blanchedalmond;
+}
+
+#Body-Div2{
+    border: 3px double red;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+#Body-Div3{
+    justify-items: center;
+}
+
+
+#Footer-Div{
+    justify-items: center;
+}
+
+#signinbutton,#loginbutton{
+
+    font-size: large;
+    padding: 5px;
+    width: 100px;
+    border: 3px groove rgb(1, 163, 128);
+    border-radius: 10px;
+    color: rgb(0, 236, 141);
+    background-color: rgb(163, 98, 1);
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-align: center;
+    
+}
+
+#signinbutton:hover,#loginbutton:hover {
+    color: yellow;
+    transform: translateX(8px);
+    /* transform: rotate(0.5turn); */
+    text-shadow: 0 0 10px gold;
+}
+
+#signin-login-div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-decoration: none;
+}
+
