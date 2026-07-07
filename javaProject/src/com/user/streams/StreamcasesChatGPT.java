@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -160,8 +162,70 @@ public class StreamcasesChatGPT {
 		
 		Comparator<Employee> byName =
 			    (e1, e2) -> e1.getName().compareTo(e2.getName());
-		
-	}
+			    
+		//Find second higest unique number
+			    
+			    int[] numbers = {12, 5, 18, 9, 25, 30, 18, 5, 40};
+			    Optional<Integer> num = Arrays.stream(numbers).boxed().collect(Collectors.groupingBy(n -> n, Collectors.counting())).entrySet()
+			    .stream().filter(e -> e.getValue() == 1).map(Map.Entry::getKey).sorted(Comparator.reverseOrder()).skip(1).findFirst();
+			    
+			    System.out.println(num);
+			    
+			    
+			    //Find the total amount spent by each customer.
+			    String[][] orders = {
+			    	    {"John", "Laptop", "80000"},
+			    	    {"John", "Mouse", "1000"},
+			    	    {"David", "Laptop", "80000"},
+			    	    {"David", "Keyboard", "2500"},
+			    	    {"Mary", "Mouse", "1000"},
+			    	    {"Mary", "Keyboard", "2500"},
+			    	    {"John", "Keyboard", "2500"}
+			    	};
+			    
+			    
+			    Map<String, Integer> retMap = Arrays.stream(orders).collect(Collectors.groupingBy(e -> e[0], Collectors.summingInt(e -> Integer.parseInt(e[2]))));
+			    System.out.println(retMap);
+			    
+			    //second most frequent word.
+			    String[] words = {
+			    	    "java",
+			    	    "spring",
+			    	    "boot",
+			    	    "java",
+			    	    "react",
+			    	    "spring",
+			    	    "java",
+			    	    "docker"
+			    	};	
+			    
+			    Optional<Map.Entry<String, Long>> aa =  Arrays.stream(words).collect(Collectors.groupingBy(ch -> ch,Collectors.counting())).entrySet().stream().
+			    sorted(
+			        Comparator.comparing(Map.Entry<String, Long>::getValue)
+			                  .reversed()).skip(1).findFirst();
+			    
+			    
+			    
+			    //employee with the highest salary in each department
+			    String[][] employeesdetails = {
+			    	    {"IT", "John", "70000"},
+			    	    {"IT", "David", "80000"},
+			    	    {"HR", "Mary", "60000"},
+			    	    {"HR", "Mike", "65000"},
+			    	    {"Finance", "Sara", "90000"},
+			    	    {"Finance", "Tom", "85000"},
+			    	    {"IT", "James", "75000"}
+			    	};
+			    
+			    Map<String, String> result = Arrays.stream(employeesdetails)
+							.collect(Collectors.groupingBy(e -> e[0],
+									Collectors.collectingAndThen(
+											Collectors.maxBy(Comparator.comparingInt(e -> Integer.parseInt(e[2]))),
+											optional -> optional.get()[1])));
+			    
+			    
+			    
+		}
 
 }
 
