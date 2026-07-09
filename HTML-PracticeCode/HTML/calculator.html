@@ -8,15 +8,44 @@
 </head>
 <body>
 
-    <div id="Main-div">
-        <div class="header-div">
-            <!-- <div> -->
-                <h1>Calculator</h1>
-                <input type="text" id="display" />
-                <button>C</button>
-            <!-- </div> -->
+    <div id="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="display" />
+        <div class="buttons-div">
+            <button  onclick="clearData()">C</button>
+            <button style="float: right;" onclick="clearDataSingle()">x</button>
+            <div>
+                <button onclick="setInput('7')">7</button>
+                <button onclick="setInput('8')">8</button>
+                <button onclick="setInput('9')">9</button>
+                <button onclick="setInput('/')">/</button> 
+            </div>
+            <div>
+                <button onclick="setInput('4')">4</button>
+                <button onclick="setInput('5')">5</button>
+                <button onclick="setInput('6')">6</button>
+                <button onclick="setInput('*')">*</button> 
+            </div>
+            <div>
+                <button onclick="setInput('1')">1</button>
+                <button onclick="setInput('2')">2</button>
+                <button onclick="setInput('3')">3</button>
+                <button onclick="setInput('-')">-</button> 
+            </div>
+            <div>
+                <button onclick="setInput('.')">.</button>
+                <button onclick="setInput('0')">0</button>
+                <button onclick="setInput('+')">+</button>
+                <button onclick="calculate()">=</button> 
+            </div>
+
+            
         </div>
+
+       
     </div>
     
 </body>
+
+<script src="/JS/calculatorFn.js"></script>
 </html>
