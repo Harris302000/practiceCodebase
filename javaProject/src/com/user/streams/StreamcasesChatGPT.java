@@ -4,11 +4,16 @@ import java.nio.file.DirectoryStream.Filter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
@@ -225,7 +230,104 @@ public class StreamcasesChatGPT {
 			    
 			    
 			    
-		}
+			    Map<Character,Long> finalmap = new LinkedHashMap<Character, Long>();
+			    
+			    String word = "swissw";
+			    
+			    Character chars = word.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(
+			    		Function.identity(), Collectors.counting()
+			    		)).entrySet().stream().peek(e -> System.out.println("value::"+e)).filter(e -> e.getValue() > 1).peek(e -> System.out.println("valuesss::"+e.getValue())).map(e -> e.getKey()).findFirst().orElse(null);
+			    System.out.println(chars);
+			    
+			    
+			    //Return all numbers divisible by 10 in descending order.
+			    int[] arr = {10, 20, 30, 40, 50, 60, 70};
+			   
+			    List<Integer> retList1 = Arrays.stream(arr).boxed().filter(n -> n%10 == 0).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+			    
+				// The most frequent word.
+				String[] wordsarr = { "Java", "Spring", "Java", "React", "Spring", "Java" };
+			    
+				Optional<Map.Entry<String, Long>> retList2 = Arrays.stream(wordsarr)
+			    .collect(Collectors.groupingBy( Function.identity(),LinkedHashMap::new,Collectors.counting())).entrySet()
+			    .stream().max(Comparator.comparing(Map.Entry::getValue));
+				
+				
+				//The first name that appears exactly once.
+				String[] namesarr = { "John", "David", "Mary", "John", "Sara", "David", "John" };
+			    
+				
+				String name = Arrays.stream(namesarr).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting())).entrySet()
+						.stream().filter(e -> e.getValue() == 1).map(e -> e.getKey()).findFirst().orElse("No Name Found");
+				
+				
+				//The second highest number that appears exactly once.
+				
+				int[] arr1={10,20,30,40,50,20,30,70};
+				
+				Integer retNum = Arrays.stream(arr1).boxed().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet()
+						.stream().filter(e -> e.getValue() == 1).map(e ->e.getKey()).sorted(Comparator.reverseOrder()).skip(1).findFirst().orElse(null);
+				
+				//Department having the highest average salary.
+				String[][] employeessss = {
+					    {"IT","John","70000"},
+					    {"IT","David","80000"},
+					    {"HR","Mary","60000"},
+					    {"Finance","Sara","90000"},
+					    {"HR","Mike","65000"},
+					    {"IT","James","75000"}
+					};
+				
+				
+				Optional<Map.Entry<String, Double>> retList3 = Arrays.stream(employeessss).
+						collect(Collectors.groupingBy(e -> e[0],Collectors.averagingDouble(e -> Double.parseDouble(e[2])))).entrySet()
+						.stream().max(Comparator.comparing(Map.Entry::getValue));
+				
+				//Customer who spent the highest total amount.
+				String[][] sales = {
+					    {"John","Laptop","80000"},
+					    {"John","Mouse","1000"},
+					    {"David","Laptop","80000"},
+					    {"David","Keyboard","2500"},
+					    {"Mary","Mouse","1000"},
+					    {"Mary","Keyboard","2500"},
+					    {"John","Keyboard","2500"}
+					};
+				
+				Optional<Map.Entry<String, Integer>> retList4 = Arrays.stream(sales).collect(Collectors.groupingBy(e -> e[0],Collectors.summingInt(e -> Integer.parseInt(e[2]))))
+						.entrySet().stream().max(Comparator.comparing(Map.Entry<String,Integer>::getValue));
+				
+				
+				String[][] products = {
+					    {"P101","Laptop","80000"},
+					    {"P102","Mouse","1000"},
+					    {"P101","Laptop","82000"},
+					    {"P103","Keyboard","2500"},
+					    {"P102","Mouse","1200"},
+					    {"P104","Monitor","15000"}
+					};
+				
+				Map<String,Integer> retList5 = Arrays.stream(products).collect(Collectors.toMap(i -> i[0], i -> Integer.parseInt(i[2]),Integer::sum,TreeMap::new));
+				
+				
+				String[][] ordersss = {
+					    {"John","Laptop"},
+					    {"John","Mouse"},
+					    {"David","Laptop"},
+					    {"David","Keyboard"},
+					    {"Mary","Mouse"},
+					    {"Mary","Keyboard"},
+					    {"John","Keyboard"},
+					    {"David","Mouse"},
+					    {"John","Laptop"}
+					};
+				
+				
+				Map<String,String> retList6 = Arrays.stream(ordersss).collect(Collectors.toMap(i -> i[0],i -> i[1], (a,b) -> a+","+b));
+				
+				System.out.println("retList6::"+retList6);
+				
+	}
 
 }
 
