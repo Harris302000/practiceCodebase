@@ -68,6 +68,9 @@ p{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    text-decoration: none;
 }
 
+
+#signin-login-div a{
+    text-decoration: none;
+}

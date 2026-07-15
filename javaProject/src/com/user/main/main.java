@@ -49,6 +49,7 @@ public class main extends leetcodeProblems{
 		boolean designpattern =false;
 		
 		// MyArrayList<Integer> list1 = new MyArrayList<>();
+		threadtestcalling();
 
 		if (testFlag) {
 			databaseConnection DBconnect = databaseConnection.getInstance();
@@ -104,13 +105,16 @@ public class main extends leetcodeProblems{
 	public static void threadtestcalling() {
 
 		ThreadTestCases TTC = new ThreadTestCases();
-		TTC.ThreadMethod();
+//		TTC.ThreadMethod();		
+		TTC.start();
 		
 		ThreadTestCases TTC1 = new ThreadTestCases();
-		TTC1.ThreadMethod();
+//		TTC1.ThreadMethod();
+		TTC1.start();
 		
 		ThreadTestCases TTC2 = new ThreadTestCases();
-		TTC2.ThreadMethod();
+//		TTC2.ThreadMethod();
+		TTC2.start();
 	}
 
 	public static void linkedListtestcalling() {

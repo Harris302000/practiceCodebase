@@ -3,6 +3,7 @@ package com.user.streams;
 import java.nio.file.DirectoryStream.Filter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -327,14 +328,106 @@ public class StreamcasesChatGPT {
 				
 				System.out.println("retList6::"+retList6);
 				
+				
+				
+				List<Integer> numbersss= new ArrayList<>();
+
+				numbersss.add(30);
+				numbersss.add(10);
+				numbersss.add(20);
+				
+				numbersss.sort(Comparator.naturalOrder());
+				
+//				Collections.sort(numbersss);
+				
+				System.out.println(numbersss);
+				
+				
+				
+				List<Employee> employeeList = new ArrayList<>();
+
+				employeeList.add(new Employee(101, "Agnes", 60000));
+				employeeList.add(new Employee(103, "John", 50000));
+				employeeList.add(new Employee(102, "David", 70000));
+				
+				
+				employeeList.sort(Comparator.comparing(Employee::getSalary));
+				
+				for(Employee a : employeeList) {
+					System.out.println(a.toString());
+				}
+				
+				
+				Collections.sort(employeeList);
+				
+				for(Employee a : employeeList) {
+					System.out.println(a.toString());
+				}
+				
+				
+				List<String> names_SS = Arrays.asList(
+						"Harris",
+					    "Agnes",
+					    "John",
+					    "David",
+					    "Sam"
+					);
+				
+				names_SS.stream()
+			     .filter(a -> {
+			         System.out.println("Filtering: " + a);
+			         return a.startsWith("A");
+			     })
+			     .map(a -> {
+			         System.out.println("Mapping: " + a);
+			         return a.toUpperCase();
+			     })
+			     .findFirst();
+				
+				
 	}
 
 }
 
-class Employee {
+class Employee implements Comparable<Employee>{
 
     String name;
+    int id;
+    double salary;
+	List<String> skills;
+    
+    
+    Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
 
+    @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+    	
+    	
+		return id+"-"+name+"-"+salary;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+    
     public String getName() {
 		return name;
 	}
@@ -351,7 +444,12 @@ class Employee {
 		this.skills = skills;
 	}
 
-	List<String> skills;
+	@Override
+	public int compareTo(Employee o) {
+		// TODO Auto-generated method stub
+		return this.id - o.id;
+	}
+
 
 }
 
