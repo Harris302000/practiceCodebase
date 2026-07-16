@@ -1,14 +1,18 @@
 package com.user.thread;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class ThreadTestCases extends Thread{
 	
 	
 	
 	private static ExecutorService CC = Executors.newFixedThreadPool(3);
+	
 	
 	@Override
 	public void run() {
@@ -47,6 +51,9 @@ public class ThreadTestCases extends Thread{
 			
 			
 		} ;
+		
+		
+		
 		
 		CC.submit(printOdd);
 		

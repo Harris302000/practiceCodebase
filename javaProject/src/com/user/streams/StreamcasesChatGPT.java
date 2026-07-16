@@ -491,8 +491,33 @@ public class StreamcasesChatGPT {
 				//Task 5 Find the most frequent word.
 				str = "";
 				str = Arrays.stream(wordss).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting())).entrySet()	
-						.stream().max(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).orElseGet(() -> null);
+						.stream().sorted(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).findFirst().orElseGet(() -> null);
 				
+				
+				
+				String[][] orders1 = {
+					    {"John", "Laptop", "80000"},
+					    {"John", "Mouse", "1000"},
+					    {"David", "Laptop", "80000"},
+					    {"David", "Keyboard", "2500"},
+					    {"Mary", "Mouse", "1000"},
+					    {"Mary", "Keyboard", "2500"},
+					    {"John", "Keyboard", "2500"},
+					    {"David", "Mouse", "1000"},
+					    {"John", "Laptop", "82000"}
+					};
+				
+				Map<String,Double> retList14 = Arrays.stream(orders).collect(Collectors.groupingBy(e -> e[0], Collectors.averagingDouble(e -> Double.parseDouble( e[2]))));
+						
+				System.out.println("retList14::"+retList14);
+				
+				str = "swiss";
+				
+				
+				str= new StringBuilder(str).reverse().toString();
+				
+				
+				System.out.println("str::"+str);
 	}
 
 }
