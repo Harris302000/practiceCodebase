@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -17,6 +18,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -271,19 +273,21 @@ public class StreamcasesChatGPT {
 				
 				//Department having the highest average salary.
 				String[][] employeessss = {
-					    {"IT","John","70000"},
-					    {"IT","David","80000"},
-					    {"HR","Mary","60000"},
-					    {"Finance","Sara","90000"},
-					    {"HR","Mike","65000"},
-					    {"IT","James","75000"}
+						 {"IT", "John", "100000"},
+						    {"IT", "David", "20000"},
+						    {"IT", "James", "20000"},
+						    {"HR", "Mary", "40000"},
+						    {"HR", "Mike", "30000"},
+						    {"Finance", "Sara", "30000"},
+						    {"Finance", "Tom", "10000"},
+						    {"Finance", "Anna", "40000"}
 					};
 				
 				
-				Optional<Map.Entry<String, Double>> retList3 = Arrays.stream(employeessss).
-						collect(Collectors.groupingBy(e -> e[0],Collectors.averagingDouble(e -> Double.parseDouble(e[2])))).entrySet()
-						.stream().max(Comparator.comparing(Map.Entry::getValue));
-				
+//				Optional<Map.Entry<String, Double>> retList3 = Arrays.stream(employeessss).
+//						collect(Collectors.groupingBy(e -> e[0],Collectors.averagingDouble(e -> Double.parseDouble(e[2])))).entrySet()
+//						.stream().max(Comparator.comparing(Map.Entry::getValue));
+//				
 				//Customer who spent the highest total amount.
 				String[][] sales = {
 					    {"John","Laptop","80000"},
@@ -384,6 +388,110 @@ public class StreamcasesChatGPT {
 			     })
 			     .findFirst();
 				
+				
+				
+				
+				//Employee name having the highest salary in that department
+				Map<String, String> retList7  = Arrays.stream(employeessss).collect(Collectors.groupingBy(e -> e[0], Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(e -> Integer.parseInt(e[2]))), optional -> optional.get()[1] )));
+				System.out.println("retList7: " + retList7);
+				
+				
+				
+				Map<String,Integer> retList8 = Arrays.stream(employeessss).collect(Collectors.toMap(e -> e[0], e -> Integer.parseInt(e[2]),Integer::max));
+				System.out.println("retList8: " + retList8);
+				
+				
+				
+				String[][] employeesz = {
+					    {"IT", "John"},
+					    {"IT", "David"},
+					    {"IT", "James"},
+					    {"HR", "Mary"},
+					    {"HR", "Mike"},
+					    {"Finance", "Sara"}
+					};
+				
+				
+				Map<String, String> retList9 = Arrays.stream(employeesz).collect(Collectors.toMap(e -> e[0], e -> e[1],(a,b) -> a+","+b));
+				System.out.println("retList9: " + retList9);
+				
+				
+				Map<String, List<String>> retList10 = Arrays.stream(employeesz).collect(Collectors.groupingBy(e -> e[0],Collectors.mapping(e -> e[1], Collectors.toList() ) ));
+				System.out.println("retList10: " + retList10);
+				
+				
+				Map<String, Integer> retList11 = Arrays.stream(employeessss).collect(Collectors.groupingBy(e -> e[0],Collectors.collectingAndThen(Collectors.toSet(), Optional -> Optional.size())));
+				System.out.println("retList11: " + retList11);
+				
+				Map<String, List<String>> retList12 = Arrays.stream(employeessss).sorted(Comparator.comparing(e -> Integer.parseInt(e[2])))
+						.collect(Collectors.groupingBy(e -> e[0], Collectors.mapping(e -> e[2], Collectors.toList())));
+				
+				Map<String, Integer> retList13 = Arrays.stream(employeessss).filter(n -> Integer.parseInt(n[2]) >= 70000).collect(Collectors.groupingBy(e -> e[0],Collectors.summingInt(e -> 1)));
+	
+	
+	
+	
+				String[] wordss = { "Java", "Spring", "Java", "React", "Spring", "Java", "SQL", "React" };
+				
+				//Task 1 Using HashMap, find the frequency of each word.
+				//Normal code
+				Map<String,Integer> retmap = new HashMap();
+				
+				for(int i=0 ;i< wordss.length; i++) {
+					
+					retmap.put(wordss[i], retmap.getOrDefault(wordss[i], 0) + 1);
+						
+				}
+				
+				System.out.println("retmap::"+retmap);
+				
+				
+				//Task2 find the frequency of each word.
+				//Stream
+				retmap = new HashMap<String, Integer>();
+				
+				retmap = Arrays.stream(wordss).collect(Collectors.groupingBy(Function.identity(),Collectors.summingInt(e -> 1)));
+				
+				System.out.println("retmap::"+retmap);
+				
+
+				//Task 3  Find the first word whose frequency is exactly 1.
+				//Normal code
+				retmap = new LinkedHashMap();
+				
+				for(int i=0 ;i< wordss.length; i++) {
+					
+					retmap.put(wordss[i], retmap.getOrDefault(wordss[i], 0) + 1);
+						
+				}
+				
+				String str = "";
+				for (Map.Entry<String, Integer> a : retmap.entrySet()) {
+
+					if (a.getValue() == 1) {
+						str = a.getKey();
+						break;
+					}
+
+				}
+				
+				System.out.println("str::"+str);
+				
+				
+				//Task 4  Find the first word whose frequency is exactly 1.
+				//Stream
+				str = "";
+				str = Arrays.stream(wordss).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()))
+						.entrySet()
+						.stream()
+						.filter(e -> e.getValue() == 1).map(Map.Entry::getKey).findFirst().orElseGet(null);
+				System.out.println("str::"+str);
+				
+				
+				//Task 5 Find the most frequent word.
+				str = "";
+				str = Arrays.stream(wordss).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting())).entrySet()	
+						.stream().max(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).orElseGet(() -> null);
 				
 	}
 
