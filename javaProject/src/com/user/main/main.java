@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.user.builderdesignpattern.myComputer;
+import com.user.designpattern.builderdesignpattern.myComputer;
 import com.user.genericfunctions.databaseConnection;
 import com.user.interfaces.defaultInterfaces;
 import com.user.interfaces.sumInterface;

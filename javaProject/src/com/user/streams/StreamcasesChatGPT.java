@@ -16,6 +16,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -518,6 +519,53 @@ public class StreamcasesChatGPT {
 				
 				
 				System.out.println("str::"+str);
+				
+				
+				
+				String[][] employeeszz = {
+					    {"IT", "John", "70000"},
+					    {"IT", "David", "80000"},
+					    {"IT", "James", "75000"},
+					    {"HR", "Mary", "60000"},
+					    {"HR", "Mike", "65000"},
+					    {"HR", "Sara", "55000"},
+					    {"Finance", "Kevin", "90000"},
+					    {"Finance", "Steve", "85000"},
+					    {"Finance", "Tom", "70000"}
+					};
+				
+				
+				Map<String,Double> deptAvg = Arrays.stream(employeeszz).collect(Collectors.groupingBy(e -> e[0],Collectors.averagingDouble(e -> Double.parseDouble(e[2]))));
+				System.out.println("deptAvg::"+deptAvg);
+				
+				List<String> employeeName = Arrays.stream(employeeszz).filter(e -> Double.parseDouble(e[2]) >   deptAvg.get(e[0]) ).map(e -> e[1].toUpperCase()).collect(Collectors.toList());
+				System.out.println("employeeName::"+employeeName);
+				
+				
+				Map<String,String> highPaidemployeeName = Arrays.stream(employeeszz).filter(e -> Double.parseDouble(e[2]) > deptAvg.get(e[0]))
+						.collect(Collectors.groupingBy(e -> e[0], Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(e ->  Double.parseDouble(e[2]))),Optional -> Optional.get()[2])));
+				System.out.println("highPaidemployeeName::"+highPaidemployeeName);
+				
+				
+				
+				List<String> listzz = new CopyOnWriteArrayList<>();
+
+				listzz.add("Java");
+				listzz.add("Spring");
+				listzz.add("SQL");
+
+				for(String s : listzz){
+
+				    if(s.equals("Spring")){
+
+				    	listzz.add("Docker");
+
+				    }
+
+				}
+				
+				System.out.println("listzz::"+listzz);
+	
 	}
 
 }

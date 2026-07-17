@@ -1,4 +1,4 @@
-package com.user.builderdesignpattern;
+package com.user.designpattern.builderdesignpattern;
 
 public class myComputer {
 
