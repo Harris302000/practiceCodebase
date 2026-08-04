@@ -1,12 +1,65 @@
 import "../CSS/signin-styles.css";
 import logo from "../assets/Images/naukriLogo.svg";
 import lpImg1 from "../assets/Images/leftpane-img1.png";
+import { useState } from "react";
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+const validateEmail = (e) => {
+    const email = e.target.value;
+    const alertLabel = document.getElementById('emailid_p');
+    if(!emailRegex.test(email)){
+      e.target.value = '';
+      alertLabel.style.color = 'Red';
+      alertLabel.innerText = 'Enter a valid Email ID';
+      e.target.style.borderColor = 'Red';
+    } else {
+       alertLabel.style.color = '';
+      e.target.style.borderColor = '';
+      alertLabel.innerText = ''
+    }
+}
+
+
 
 function Signin() {
+
+  let [username, setUsername] = useState("");
+
+  function checkName(e){
+    console.log(e.target.value);
+
+    let a = e.target
+    let name = a.value;
+    let b = document.getElementById("username_p")
+
+    setUsername(name !=''? `Welcome, ${name}`:'');
+
+    if(name == ''){
+      b.innerText = "Username is mandatory";
+      b.style.color = "Red"
+      a.style.borderColor = "Red";
+      // setUsername("");
+    } else {
+      b.innerText = "";
+      b.style.color = ""
+      a.style.borderColor = "";
+    }
+}
+
+
   return (
     <>
       <header>
         <img src={logo} alt="img not found" />
+
+        <nav>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        
+
         <p>
           Already Registered?{" "}
           <a href="" style={{ textDecoration: "none", color: "blue" }}>
@@ -29,6 +82,7 @@ function Signin() {
 
         <div id="panel-2">
           <div>
+            <h5>{username}</h5>
             <h3>Create your Naukri profile</h3>
             <p>Search & apply to jobs from India's No.1 Job Site</p>
           </div>
@@ -41,8 +95,9 @@ function Signin() {
                 id="username"
                 autoComplete="name"
                 placeholder="What is your name?"
+                onBlur={checkName}
               />
-              <p></p>
+              <p id="username_p"></p>
             </div>
 
             <div className="input-div">
@@ -52,8 +107,9 @@ function Signin() {
                 id="emailid"
                 autoComplete="email"
                 placeholder="Tell us your Email ID"
+                onBlur={validateEmail}
               />
-              <p>We'll send relevant jobs and updates to this email</p>
+              <p id="emailid_p">We'll send relevant jobs and updates to this email</p>
             </div>
 
             <div className="input-div">
@@ -64,7 +120,7 @@ function Signin() {
                 autoComplete="new-password"
                 placeholder="(Minimum 6 characters)"
               />
-              <p>This helps your account stay protected</p>
+              <p id="Password_p">This helps your account stay protected</p>
             </div>
 
             <div className="input-div">
@@ -75,7 +131,7 @@ function Signin() {
                 autoComplete="tel"
                 placeholder="Enter mobile number"
               />
-              <p>Recruiters will contact you on this number</p>
+              <p id="mobNumber_p">Recruiters will contact you on this number</p>
             </div>
 
             <div className="work-status">

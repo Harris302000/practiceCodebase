@@ -86,3 +86,26 @@ footer{
   padding-right: 20px;
   border-top: 1px solid black;
 }
+
+
+main {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+section {
+  flex: 3;
+}
+
+aside {
+  flex: 1;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+article {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}

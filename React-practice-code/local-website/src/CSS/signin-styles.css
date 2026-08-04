@@ -1,5 +1,9 @@
-header{
+#root{
+    font-family: 'Times New Roman', Times, serif;
+}
 
+header{
+    box-sizing: border-box;
     padding-left : 150px ;
     padding-right : 150px;
     padding-bottom: 15px;
@@ -11,12 +15,43 @@ header{
 
 }
 
+header p{
+    font-weight: 600;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content:space-between;
+    align-items: center;
+}
+
+header nav a{
+    text-decoration: none;
+    /* border-bottom: 2px solid rgb(199, 193, 193); */
+    padding: 7px;
+    /* background-color: lightgray; */
+    /* background: linear-gradient(to top, rgb(110, 179, 110)); */
+    color: black;
+    border-radius: 10px;
+    font-variant: small-caps;
+    font-weight: 700;
+}
+
+header nav a:hover{
+    color: rgb(22, 80, 156);
+    background-color: white;
+    font-weight: 900;
+    padding: 10px;
+}
+
 span{
     color: red;
 }
 
 main{
-    background-color: rgba(248, 249, 250);
+    background-color: rgb(238, 238, 238);
     padding-left : 150px ;
     padding-right : 150px;
     /* padding-top: 40px; */
@@ -114,6 +149,11 @@ main{
    padding-bottom: 3px;
 }
 
+.input-div input:focus{
+    outline: none;
+    border-color: blue;
+}
+
 .input-div label{
    padding-bottom: 5px;
    font-weight: 700;
@@ -123,6 +163,8 @@ main{
    margin: 0px;
    font-weight: lighter;
    font-size: 13px;
+   color: rgb(180, 179, 179);
+   padding-top: 3px;
 }
 
 .work-options {
