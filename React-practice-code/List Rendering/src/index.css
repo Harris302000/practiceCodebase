@@ -58,6 +58,39 @@ footer {
   place-content: center;
 }
 
+
+table{
+  padding-top: 50px;
+}
+
+
 td{
-  width: 150px;
+  width: 100px;
+}
+
+
+td svg{
+  color: blue;
+}
+
+td #edit:hover{
+  color: rgb(96, 153, 36);
+}
+
+td #delete:hover{
+  color: rgb(170, 36, 32);
+}
+
+
+.input-div{
+  padding-top: 40px;
+  width: 30%;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  height: max-content;
+  /* flex-wrap: wrap; */
+}
+
+.input-div input{
+  gap : 100px
 }
