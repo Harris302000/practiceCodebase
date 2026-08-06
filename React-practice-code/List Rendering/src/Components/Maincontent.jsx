@@ -5,16 +5,14 @@ import { FaRegEdit } from "react-icons/fa";
 
 function Main() {
   let { productlist } = useContext(productContext);
-//   console.log("productlist::" + JSON.stringify(productlist));
-
   let [prodname, setProdname] = useState("");
-
+  let [prodcost, setProdcost] = useState(0);
   let [data, setData] = useState(productlist);
+  let [editFlag, setEditFlag] = useState(false)
+  let [curEleId, setcurEleId] = useState(null)
 
-//   console.log("data::" + JSON.stringify(data));
 
   const handleCheckbox = (id) => {
-    // console.log("id::" + id);
 
     let newlist = data.map((product) => {
       return product.id === id
@@ -22,10 +20,42 @@ function Main() {
         : product;
     });
 
-    // console.log("newlist::" + JSON.stringify(newlist));
-
     setData(newlist);
   };
+
+
+  const handleDelete = (id) => {
+
+    let newlist =  data.filter(item => item.id != id).map((item ,index) => {return {...item,id : index+1}})
+
+    setData(newlist)
+
+  }
+
+
+  const handleEdit = (id) => {
+      setEditFlag(true)
+
+      let list = data.find(item => item.id === id);
+      console.log("handleEdit::"+JSON.stringify(list) )
+
+      setcurEleId(list.id)
+      setProdname(list.name)
+      setProdcost(list.cost)
+  }
+
+  const handleAddOrSave = () => {
+      
+    if(editFlag){
+
+    } else {
+      let listArr = [...data,{id : data.length + 1 , name : prodname , cost : prodcost, checked : false}]
+      setData(listArr)
+      setProdname("")
+      setProdcost(0)
+    }
+  }
+
 
   return (
     <>
@@ -37,8 +67,7 @@ function Main() {
         <h3>To Do List</h3>
 
         <div className="input-div">
-            <div>
-                <input
+          <input
             type="text"
             name="product"
             id="product"
@@ -48,10 +77,10 @@ function Main() {
               setProdname(e.target.value);
             }}
           />
-          <input type="number" name="cost" id="cost" placeholder="Enter Cost" />
-            </div>
+          <input type="number" name="cost" id="cost" placeholder="Enter Cost" value={prodcost} onChange={(e) => setProdcost(e.target.value)}/>
+            
           
-          <button>Add</button>
+          <button onClick={handleAddOrSave}>{editFlag ? "Save" : "Add" }</button>
         </div>
 
         <table>
@@ -75,8 +104,8 @@ function Main() {
                     <label>{product.cost}</label>
                   </td>
                   <td>
-                    <FaRegEdit id="edit" tabIndex={0} />{" "}
-                    <FaRegTrashCan id="delete" tabIndex={0} />
+                    <FaRegEdit id="edit" tabIndex={0} onClick={() => handleEdit(product.id)}/>{" "}
+                    <FaRegTrashCan id="delete" tabIndex={0} onClick={ () => handleDelete(product.id)}/>
                   </td>
                 </tr>
               );
