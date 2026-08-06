@@ -45,6 +45,7 @@ main {
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   overflow-y: auto;
 }
@@ -71,6 +72,7 @@ td{
 
 td svg{
   color: blue;
+  cursor: pointer;
 }
 
 td #edit:hover{
