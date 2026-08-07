@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
@@ -7,6 +7,15 @@ const Loginpage = () => {
     let [password, SetPassword ] = useState("")
     let navigate = useNavigate("");
 
+
+    // useEffect(() => {console.log("Getting printed on every rended");
+    // })
+
+    useEffect(() => {console.log("Getting printed on First rended");
+    }, [])
+
+    useEffect(() => {console.log("Getting printed on Username Change");
+    }, [username])
 
     let handleLogin = () => {
         if(username === '' || password === ''){
@@ -32,6 +41,7 @@ const Loginpage = () => {
         <h4>Create new account</h4>
         <Link to='/Signinpage' >Signin</Link>
       </div>
+      
     </div>
   );
 };
