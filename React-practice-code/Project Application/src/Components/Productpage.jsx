@@ -51,11 +51,16 @@ const Productpage = () => {
                 </center>
 
                 <Card.Body>
+                  
                   <Card.Title>{p.title}</Card.Title>
                   {/* <Card.Subtitle>{p.category}</Card.Subtitle> */}
-                  <Card.Text style={{ overflow: "scroll", height: "200px" }}>
+                  {/* <Card.Text style={{ overflow: "scroll", height: "200px" }}>
                     {p.description}
-                  </Card.Text>
+                  </Card.Text> */}
+                  <center>
+                    <Card.Title>${p.price}</Card.Title>
+                  </center>
+                  
                   <Card.Footer
                     style={{
                       display: "flex",
@@ -64,7 +69,8 @@ const Productpage = () => {
                     }}
                   >
                     <Button variant="primary">Add to cart</Button>
-                    <Card.Title>${p.price}</Card.Title>
+                    <Button variant="danger">delete</Button>
+                    <Button variant="info">Edit</Button>
                   </Card.Footer>
                 </Card.Body>
               </Card>
