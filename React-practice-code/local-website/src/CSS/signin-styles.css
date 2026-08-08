@@ -1,0 +1,203 @@
+#root{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header{
+    box-sizing: border-box;
+    padding-left : 150px ;
+    padding-right : 150px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Satoshi,sans-serif;
+    font-style: normal;
+
+}
+
+header p{
+    font-weight: 600;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content:space-between;
+    align-items: center;
+}
+
+header nav a{
+    text-decoration: none;
+    /* border-bottom: 2px solid rgb(199, 193, 193); */
+    padding: 7px;
+    /* background-color: lightgray; */
+    /* background: linear-gradient(to top, rgb(110, 179, 110)); */
+    color: black;
+    border-radius: 10px;
+    font-variant: small-caps;
+    font-weight: 700;
+}
+
+header nav a:hover{
+    color: rgb(22, 80, 156);
+    background-color: white;
+    font-weight: 900;
+    padding: 10px;
+}
+
+span{
+    color: red;
+}
+
+main{
+    background-color: rgb(238, 238, 238);
+    padding-left : 150px ;
+    padding-right : 150px;
+    /* padding-top: 40px; */
+    display: flex;
+
+}
+
+#panel-1{
+    box-sizing: border-box;
+    border: 1px solid rgba(231, 231, 241);
+    border-radius: 10px ;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    width: 300px;
+    height: fit-content;
+    margin: 40px;
+    margin-left: 0px;
+    margin-right: 45px;
+    padding-left: 5px;
+    position: sticky;
+    top: 110px;
+}
+
+#panel-2{
+    box-sizing: border-box;
+    border: 1px solid rgba(231, 231, 241);
+    border-radius: 10px ;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    /* position: relative; */
+    margin-top: 40px;
+    margin-left: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    flex: 1;
+}
+
+#panel-1 h3{
+    text-align: center;
+}
+
+#panel-1 ul{
+    margin: 0px;
+}
+
+#panel-1 li{
+    padding-bottom: 15px;
+}
+
+#lpImg1{
+    width: 200px;
+    padding-top: 10px;
+    margin: 0px;
+}
+
+
+#panel-2 h3{
+    margin-top: 35px;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+#panel-2 p{
+    margin-top: 0px;
+}
+
+.input-main-div{
+    padding-top: 25px;
+    width: 79%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.input-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-div input{
+   width: 95%;
+   height: 40px;
+   border-radius: 15px;
+   border: 1px solid rgba(231, 231, 241);
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+}
+
+.input-div input:focus{
+    outline: none;
+    border-color: blue;
+}
+
+.input-div label{
+   padding-bottom: 5px;
+   font-weight: 700;
+}
+
+.input-div p{
+   margin: 0px;
+   font-weight: lighter;
+   font-size: 13px;
+   color: rgb(180, 179, 179);
+   padding-top: 3px;
+}
+
+.work-options {
+    display: flex;
+    gap: 12px;
+}
+
+.work-card {
+    width: 300px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid #ddd;
+    border-radius: 16px;
+
+    cursor: pointer;
+}
+
+.work-card input {
+    display: none;
+}
+
+.work-card h3 {
+    margin: 0;
+}
+
+.work-card p {
+    margin: 5px 0 0;
+}
+
+.work-card img {
+    width: 45px;
+}

@@ -1,15 +1,26 @@
 package com.user.thread;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-public class ThreadTestCases {
+public class ThreadTestCases extends Thread{
 	
+	
+	
+	private static ExecutorService CC = Executors.newFixedThreadPool(3);
+	
+	
+	@Override
+	public void run() {
+		System.out.println("Thread is running: " + Thread.currentThread().getName());
+		ThreadMethod();
+	}
 	
 	public static void ThreadMethod() {
-		
-		ExecutorService CC = Executors.newFixedThreadPool(1);
 		
 		
 		Runnable printOdd = () ->{
@@ -40,6 +51,9 @@ public class ThreadTestCases {
 			
 			
 		} ;
+		
+		
+		
 		
 		CC.submit(printOdd);
 		

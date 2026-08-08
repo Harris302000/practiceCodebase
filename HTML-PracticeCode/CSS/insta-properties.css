@@ -1,0 +1,124 @@
+.main-div{
+    display: flex;
+    /* background-color: lightgrey; */
+    background-color: white;
+    justify-content: space-between;
+    border-bottom: 0.5px solid lightgrey
+}
+.center-div{
+    background-color: lightgrey;
+}
+
+.right-div{
+    width: 45%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 65px;
+    padding-bottom: 50px;
+    /* border-bottom: 0.5px solid lightgrey; */
+    font-style: oblique;
+}
+
+
+.right-components-div{
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;    
+
+}
+
+.right-components-div input{
+     width: 100%;
+     height: 30px;
+     padding: 13px;
+     border-radius: 12px;
+     margin-bottom: 20px;
+     font-size: small;
+     border: 0.3px solid rgb(209, 208, 208);
+
+}
+
+.right-components-div button{
+     width: 100%;
+     margin-bottom: 20px;
+     justify-content: center;
+     align-content: center;
+     padding: 12px;
+     border-radius: 20px;
+     border: 0;
+     background-color: white;
+     font-size: 16px;
+    font-weight: 400;
+}
+
+.right-components-div2{
+    margin-top: 25px;
+    /* height: 100%; */
+    width: 100%;
+    text-align: center;
+}
+
+.right-components-div1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#loginBtn{
+    background-color: blue;
+    color: white;
+}
+
+
+#linkWithFbBtn{
+    border: 0.3px solid rgb(209, 208, 208);
+}
+
+#newAccBtn{
+    border: 0.5px solid blue;
+    color: blue;
+}
+
+#forgetPassBtn:hover, #linkWithFbBtn:hover,#newAccBtn:hover{
+    background-color: lightgrey
+}
+
+
+.left-div{
+    width: 50%;
+     background-color: white;
+     border-bottom: 0.5px solid lightgrey;
+     margin-top: 15px;
+     display: flex;
+     flex-wrap: wrap;
+    
+}
+
+.left-div-components p {
+  width: 100%;
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+  word-spacing: 7px;
+  line-height: 60px;
+  margin: 0;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.left-div-components{
+     display: flex;
+     flex-wrap: wrap;
+    /* width: 100%; */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    justify-content: space-between;
+}
+
+

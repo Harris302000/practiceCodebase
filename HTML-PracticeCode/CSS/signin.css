@@ -1,0 +1,118 @@
+ #personal-details-div label {
+    font-style: normal;
+    font-weight: bolder;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+
+ }
+
+ #tropy-gif{
+   margin-left:-5px;
+   margin-bottom:-6px;
+ }
+
+
+#personal-details-div label {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+#personal-details-div label:hover {
+    color: yellow;
+    transform: translateX(8px);
+    text-shadow: 0 0 10px gold;
+}
+
+ #personal-details-div {
+
+    background-image: linear-gradient(rgba(226, 223, 223, 0.4), rgba(226, 223, 223, 0.4)), url("/Images/football_img2.jpg");
+   
+ }
+
+ .card {
+
+    padding: 40px 30px;
+    box-sizing: border-box;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid gray;
+    border-radius: 1cm;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+   color: rgb(0, 0, 0);
+    justify-self: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+   
+ }
+
+ #personal-details-div h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: x-large;
+
+ }
+
+ body {
+
+    /* background-image: linear-gradient(rgba(15, 14, 14, 0.4),
+                    rgba(14, 14, 14, 0.4)),url(/Images/football_img1.jpg); */
+   background-color: rgb(119, 119, 119);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;
+ }
+
+ .main-div {
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    
+
+ }
+
+ #Header-div{
+    border-bottom: 5px groove red;
+     margin: 10px;
+     padding: 30px;
+     border-bottom-left-radius: 30px;
+     border-bottom-right-radius: 30px;
+     background-color: rgb(96, 55, 55); 
+     border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+}
+
+
+#Header-div label {
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: blanchedalmond;
+}
+
+#header-button-div button {
+    width: 70px;
+    height: 30px;
+    color: blanchedalmond;
+
+}
+
+#header-button-div{
+    float: right;
+    display: flex;  
+    gap: 40px;
+}
+
+button{
+    background-color: rgb(58, 58, 204);
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 10px;
+    border-color: blue;
+    box-sizing: content-box;
+    /* box-shadow: 0px 0px 70px black; */
+}

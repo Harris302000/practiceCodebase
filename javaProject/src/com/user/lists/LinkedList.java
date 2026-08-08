@@ -1,4 +1,4 @@
-package com.user.lists;
+ package com.user.lists;
 
 public class LinkedList {
 
