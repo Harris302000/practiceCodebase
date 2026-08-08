@@ -11,8 +11,8 @@ function App() {
 
   
   let reducerfunction = (state, action) => {
-    console.log(action.type);
-    console.log(state);
+    // console.log(action.type);
+    // console.log(state);
     
       
     let decflag = false;
