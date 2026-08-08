@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Intropage = () => {
   let { username } = useParams();
@@ -9,6 +9,7 @@ const Intropage = () => {
     <div>
       <h1>Hi, {username}</h1>
       <h2>Welcome To the Introduction</h2>
+      <Link to='/Productpage'>Explore Products</Link>
     </div>
   );
 };

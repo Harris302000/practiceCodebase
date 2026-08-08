@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {Button} from 'react-bootstrap'
 
 const Loginpage = () => {
 
@@ -34,12 +35,12 @@ const Loginpage = () => {
         <h1>Loginpage</h1>
         <input type="text" placeholder="Enter Username" value={username} onChange={(e) => SetUsername(e.target.value)} />
         <input type="password" placeholder="Enter Password" value={password} onChange={(e) => SetPassword(e.target.value)} />
-        <button onClick={handleLogin}>Login</button>
+        <Button variant="primary" onClick={handleLogin}>Login</Button>
       </div>
 
       <div>
         <h4>Create new account</h4>
-        <Link to='/Signinpage' >Signin</Link>
+        <Button as={Link} to="/Signinpage" variant="primary">Signin</Button>
       </div>
       
     </div>
