@@ -3,6 +3,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Atom } from "react-loading-indicators";
 import useFetch from "../Customhooks/useFetch";
+import { FaCartPlus } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteSweep } from "react-icons/md";
+
 
 const Productpage = () => {
   // let [product, setProduct] = useState([]);
@@ -27,6 +31,7 @@ const Productpage = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          textAlign : 'center'
         }}
       >
         <Atom color="#32cd32" size="large" text="Loading" textColor="" />
@@ -46,7 +51,7 @@ const Productpage = () => {
                   <Card.Img
                     variant="top"
                     src={p.image}
-                    style={{ width: "7rem", height: "7rem" }}
+                    style={{ width: "7rem", height: "7rem" ,padding : ' 10px auto'}}
                   />
                 </center>
 
@@ -68,9 +73,9 @@ const Productpage = () => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <Button variant="primary">Add to cart</Button>
-                    <Button variant="danger">delete</Button>
-                    <Button variant="info">Edit</Button>
+                    <Button variant="primary"><FaCartPlus /></Button>
+                    <Button variant="danger"><MdDeleteSweep /></Button>
+                    <Button variant="info"><FaEdit /></Button>
                   </Card.Footer>
                 </Card.Body>
               </Card>

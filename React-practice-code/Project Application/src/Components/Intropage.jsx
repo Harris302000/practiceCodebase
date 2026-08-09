@@ -6,11 +6,13 @@ const Intropage = () => {
   console.log(username);
 
   return (
-    <div>
-      <h1>Hi, {username}</h1>
-      <h2>Welcome To the Introduction</h2>
-      <Link to='/Productpage'>Explore Products</Link>
-    </div>
+   
+      <div>
+        <h1>Hi, {username}</h1>
+        <h2>Welcome To the Introduction</h2>
+        <Link to="/Productpage">Explore Products</Link>
+      </div>
+    
   );
 };
 

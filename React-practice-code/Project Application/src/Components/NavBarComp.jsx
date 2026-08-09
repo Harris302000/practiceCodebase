@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../assets/Images/Company-Logo.png'
 import { Link } from 'react-router-dom';
 
-function NavBarComp() {
+ function NavBarComp() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>

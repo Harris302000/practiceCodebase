@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { TextField, Grid } from "@mui/material";
 
 const Signinpage = () => {
   let [username, setUsername] = useState("");
@@ -15,30 +16,78 @@ const Signinpage = () => {
     navigate(`/Intropage/${username}`);
   };
 
+  let signinCard = {
+    display: "flex",
+    flexDirection: "column",
+    width: "30%",
+    border: "2px solid black",
+    padding: "30px",
+    gap: "20px",
+  };
+
   return (
-    <div>
-      <div>
-        <h1>Signinpage</h1>
-        <input
-          type="text"
-          placeholder="Enter Username"
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "90vh",
+      }}
+    >
+      <form style={signinCard}>
+        <h4 style={{ textAlign: "Center" }}>Signin</h4>
+
+        <TextField
+          name="username"
+          label="Username"
+          variant="outlined"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter User Name"
+          onChange={(e) => SetUsername(e.target.value)}
+          fullWidth
         />
-        <input type="date" placeholder="Choose DOB" />
-        <input type="email" placeholder="Enter Email ID" />
+
+        <TextField
+          name="DOB"
+          label="Date Of Birth"
+          variant="outlined"
+          // value={username}
+          // onChange={(e) => SetUsername(e.target.value)}
+          type="date"
+          fullWidth
+        />
+
+        <TextField
+          name="emailID"
+          label="Email ID"
+          variant="outlined"
+          // value={username}
+          // onChange={(e) => SetUsername(e.target.value)}
+          placeholder="Enter Email ID"
+          type="email"
+          fullWidth
+        />
+
         <Button onClick={handleSignin} variant="primary">
           Signin
         </Button>
-      </div>
 
-      <div>
-        <h4>Already Having Account?</h4>
-
-        <Button as={Link} to="/Loginpage" variant="primary">
-          Login
-        </Button>
-      </div>
+        <footer
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          <label>
+            <b>
+              Already Having Account?{" "}
+              <Link to="/Loginpage">Click here to login</Link>
+            </b>
+          </label>
+        </footer>
+      </form>
     </div>
   );
 };

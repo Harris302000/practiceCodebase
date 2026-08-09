@@ -9,16 +9,24 @@ import Errorpage from './Components/Errorpage'
 import Productpage from './Components/Productpage'
 import NewProduct from './Components/NewProduct'
 
+
+const PublicPage = ({ children }) => (
+  <>
+    <NavBarComp />
+    {children}
+  </>
+);
+
 const RouterDets = () => {
 
     return <>
     <Router>
-      <NavBarComp />
+      {/* <NavBarComp /> */}
           <Routes>
             <Route path='*' element={<Errorpage />} />
-            <Route path="/" element={<Welcomepage />} />
-            <Route path="/Loginpage" element={<Loginpage />} />
-            <Route path="/Signinpage" element={<Signinpage />} />
+            <Route path="/" element={<PublicPage><Welcomepage /></PublicPage>} />
+            <Route path="/Loginpage" element={<PublicPage><Loginpage /></PublicPage>} />
+            <Route path="/Signinpage" element={<PublicPage><Signinpage /></PublicPage>} />
             <Route path="/Intropage/:username" element={<Intropage />} />
             <Route path='/Productpage' element={<Productpage />} />
             <Route path='/NewProduct' element= {<NewProduct />} />
