@@ -29,6 +29,19 @@
   /* flex-grow: 1; */
 }
 
+.products-card-div{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 20px;
+  margin: 10px auto;
+  text-align: center;
+  /* flex-grow: 1; */
+}
+
 
 .welcome-Body{
   width: 100%;
@@ -95,4 +108,25 @@ body{
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.loader-overlay{
+    position: fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background: rgba(0,0,0,0.4);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+.swal2-container{
+    z-index: 10000 !important;
 }

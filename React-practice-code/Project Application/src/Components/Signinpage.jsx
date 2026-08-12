@@ -1,28 +1,102 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { TextField, Grid } from "@mui/material";
+import Swal from "sweetalert2";
+import Axios from "axios";
 
 const Signinpage = () => {
   let [username, setUsername] = useState("");
-  let navigate = useNavigate("");
+  let [dob, setDOB] = useState("");
+  let [email, setEmail] = useState("");
+  let [mobileno, setMobileno] = useState("");
+  let [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-  let handleSignin = () => {
-    if (username === "") {
-      alert("Username is mandatory");
+  let handleSignin = async () => {
+    if (
+      username === "" ||
+      dob === "" ||
+      email === "" ||
+      mobileno === "" ||
+      password === ""
+    ) {
+      // alert("Username is mandatory");
+      Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "Kindly fill all the data",
+        showConfirmButton: false,
+        timer: 1500,
+        padding: "50px",
+        width: "500px",
+      });
       return;
     }
 
-    navigate(`/Intropage/${username}`);
+    let data = {
+      username: username,
+      password: password,
+      dob: dob,
+      mobileno: mobileno,
+      emailid: email,
+    };
+    console.log(JSON.stringify(data));
+
+    try {
+      let response = await Axios.post(
+        "http://localhost:8081/user/createuser",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Accept-Type": "application/json",
+          },
+        },
+      );
+
+      console.log(response.data);
+
+      let icon;
+
+      if (response.data.statusCode == 200) {
+        icon = "success";
+      } else {
+        icon = "info";
+      }
+
+      Swal.fire({
+        title: response.data.response,
+        icon: icon,
+        draggable: true,
+      });
+
+      if (response.data.statusCode == 200) {
+       // navigate(`/Intropage/${username}`);
+        navigate(`/Loginpage`);
+      }
+
+    } catch (error) {
+      console.log(error.response);
+
+      Swal.fire({
+        title: error.response.data,
+        icon: "error",
+        draggable: true,
+      });
+    }
+
+    
   };
 
   let signinCard = {
     display: "flex",
     flexDirection: "column",
-    width: "30%",
+    width: "27%",
     border: "2px solid black",
     padding: "30px",
     gap: "20px",
+    backgroundColor: "White",
   };
 
   return (
@@ -31,7 +105,8 @@ const Signinpage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "90vh",
+        // height: "90vh",
+        marginTop: "40px",
       }}
     >
       <form style={signinCard}>
@@ -43,16 +118,16 @@ const Signinpage = () => {
           variant="outlined"
           value={username}
           placeholder="Enter User Name"
-          onChange={(e) => SetUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           fullWidth
         />
 
         <TextField
           name="DOB"
-          label="Date Of Birth"
+          // label="Date Of Birth"
           variant="outlined"
-          // value={username}
-          // onChange={(e) => SetUsername(e.target.value)}
+          value={dob}
+          onChange={(e) => setDOB(e.target.value)}
           type="date"
           fullWidth
         />
@@ -61,17 +136,39 @@ const Signinpage = () => {
           name="emailID"
           label="Email ID"
           variant="outlined"
-          // value={username}
-          // onChange={(e) => SetUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter Email ID"
           type="email"
+          fullWidth
+        />
+
+        <TextField
+          name="mobilenumber"
+          label="Mob No"
+          variant="outlined"
+          value={mobileno}
+          onChange={(e) => setMobileno(e.target.value)}
+          placeholder="Enter Mobile No"
+          type="tel"
+          fullWidth
+        />
+
+        <TextField
+          name="password"
+          label="Password"
+          variant="outlined"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter Password"
+          type="password"
           fullWidth
         />
 
         <Button onClick={handleSignin} variant="primary">
           Signin
         </Button>
-
+      
         <footer
           style={{
             width: "100%",

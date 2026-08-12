@@ -26,8 +26,6 @@ const Loginpage = () => {
 
   let handleLogin =  async () => {
 
-    setIsLoading(true)
-    
     if (username === "" || password === "") {
       Swal.fire({
         title: "Username and Password is mandatory",
@@ -36,6 +34,8 @@ const Loginpage = () => {
       });
       return;
     }
+
+    setIsLoading(true)
 
     try{
 
@@ -72,7 +72,7 @@ const Loginpage = () => {
       draggable: true,
     });
 
-    navigate(`/Intropage/${username}`);
+    // navigate(`/Intropage/${username}`);
     
     } finally{
       setIsLoading(false)
@@ -81,68 +81,80 @@ const Loginpage = () => {
     
   };
 
-  let loginCard = {display : "flex", flexDirection:'column' ,width : '30%',border : '2px solid black',padding : '30px', gap : '20px'}
+  let loginCard = {display : "flex", flexDirection:'column' ,width : '27%',border : '2px solid black',padding : '30px', gap : '20px', backgroundColor : 'White'}
 
   return (
     <>
-    {isLoading ? (
-      <div style={{display : 'flex', justifyContent : 'center', alignItems: 'center', height:'100vh'}}> 
-        <FourSquare color="#32cd32" size="large" text="Loading..." textColor="" style={{display: 'flex', justifyContent:'center'}} />
-      </div>
-        ) : (
-          <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-      }}
-    >
-      <form style={loginCard}>
-        <h4 style={{ textAlign: "Center" }}>Login</h4>
-        <TextField
-          name="username"
-          label="Username"
-          variant="outlined"
-          value={username}
-          onChange={(e) => SetUsername(e.target.value)}
-          fullWidth
-        />
+      {isLoading && (
+        <div className="loader-overlay"
+          // style={{
+          //   display: "flex",
+          //   justifyContent: "center",
+          //   alignItems: "center",
+          //   height: "100vh",
+          // }}
+        >
+          <FourSquare
+            color="#32cd32"
+            size="large"
+            text="Loading..."
+            textColor=""
+            style={{ display: "flex", justifyContent: "center" }}
+          />
+        </div>
+      )}
 
-        <TextField
-          name="password"
-          label="Password"
-          type="password"
-          variant="outlined"
-          value={password}
-          onChange={(e) => SetPassword(e.target.value)}
-          fullWidth
-        />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
+        <form style={loginCard}>
+          <h4 style={{ textAlign: "Center" }}>Login</h4>
+          <TextField
+            name="username"
+            label="Username"
+            variant="outlined"
+            value={username}
+            onChange={(e) => SetUsername(e.target.value)}
+            fullWidth
+          />
 
-        
+          <TextField
+            name="password"
+            label="Password"
+            type="password"
+            variant="outlined"
+            value={password}
+            onChange={(e) => SetPassword(e.target.value)}
+            fullWidth
+          />
+
           <Button variant="primary" onClick={handleLogin}>
             Login
           </Button>
 
-        <footer
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <label>
-            {" "}
-            <b>
-              Dont have account?{" "}
-              <Link to="/Signinpage">Create new account</Link>
-            </b>
-          </label>
-        </footer>
-      </form>
-    </div>
-    )}
+          <footer
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
+            <label>
+              {" "}
+              <b>
+                Dont have account?{" "}
+                <Link to="/Signinpage">Create new account</Link>
+              </b>
+            </label>
+          </footer>
+        </form>
+      </div>
     </>
   );
 };

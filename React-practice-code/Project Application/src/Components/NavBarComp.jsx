@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
+            variant="underline"
           >
             <Nav.Link as={Link} to={'/'}>Home</Nav.Link>
             <Nav.Link as={Link} to={'/Loginpage'}>Login</Nav.Link>
@@ -38,7 +39,7 @@ import { Link } from 'react-router-dom';
               Link
             </Nav.Link> */}
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -46,7 +47,7 @@ import { Link } from 'react-router-dom';
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

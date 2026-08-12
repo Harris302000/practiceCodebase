@@ -143,11 +143,11 @@ public class LoginService {
 		}
 		
 		
-		if (login.getAddress() != null) {
-		    for (AddressDetails address : login.getAddress()) {
-		        address.setLogin(login);
-		    }
-		}
+//		if (login.getAddress() != null) {
+//		    for (AddressDetails address : login.getAddress()) {
+//		        address.setLogin(login);
+//		    }
+//		}
 		
 		
 		login.setCreatedAt(datetime);
@@ -177,7 +177,7 @@ public class LoginService {
             dto.setRole(user.getRole());
             dto.setCreatedAt(user.getCreatedAt());
             dto.setLastLoginAt(user.getLastLoginAt());
-            dto.setAddress(user.getAddress());
+//            dto.setAddress(user.getAddress());
 
             // Feign Client Call
             Long count = orderFeignClient.getallordercountByUserID(user.getUserid(),"PLACED");
