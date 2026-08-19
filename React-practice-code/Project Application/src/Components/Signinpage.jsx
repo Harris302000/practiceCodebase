@@ -12,6 +12,7 @@ const Signinpage = () => {
   let [mobileno, setMobileno] = useState("");
   let [password, setPassword] = useState("");
   let navigate = useNavigate();
+  let [showpass , setShowpass] = useState(false)
 
   let handleSignin = async () => {
     if (
@@ -80,7 +81,7 @@ const Signinpage = () => {
       console.log(error.response);
 
       Swal.fire({
-        title: error.response.data,
+        title: error.message,
         icon: "error",
         draggable: true,
       });
@@ -97,6 +98,7 @@ const Signinpage = () => {
     padding: "30px",
     gap: "20px",
     backgroundColor: "White",
+    animation: 'slideUp 1s ease-out'
   };
 
   return (
@@ -159,11 +161,15 @@ const Signinpage = () => {
           label="Password"
           variant="outlined"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {if(showpass){setShowpass(!showpass)}; setPassword(e.target.value)}}
           placeholder="Enter Password"
-          type="password"
+          type= { showpass ? "text" : "password"}
           fullWidth
         />
+
+        <span>
+            <input type="checkbox" name="showpassword" checked={showpass} onChange={() => setShowpass(!showpass)}/> <label>Show Password</label>
+          </span>
 
         <Button onClick={handleSignin} variant="primary">
           Signin

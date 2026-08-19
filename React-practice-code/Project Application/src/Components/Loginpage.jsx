@@ -12,6 +12,7 @@ const Loginpage = () => {
   let [password, SetPassword] = useState("");
   let [isLoading, setIsLoading] = useState(false)
   let navigate = useNavigate("");
+  let [showpass , setShowpass] = useState(false)
 
   // useEffect(() => {console.log("Getting printed on every rended");
   // })
@@ -81,7 +82,7 @@ const Loginpage = () => {
     
   };
 
-  let loginCard = {display : "flex", flexDirection:'column' ,width : '27%',border : '2px solid black',padding : '30px', gap : '20px', backgroundColor : 'White'}
+  let loginCard = {display : "flex", flexDirection:'column' ,width : '27%',border : '2px solid black',padding : '30px', gap : '20px', backgroundColor : 'White',animation: 'slideUp 1s ease-out'}
 
   return (
     <>
@@ -126,12 +127,17 @@ const Loginpage = () => {
           <TextField
             name="password"
             label="Password"
-            type="password"
+            type={showpass ? "text" : "password"}
             variant="outlined"
             value={password}
-            onChange={(e) => SetPassword(e.target.value)}
+            onChange={(e) => { if(showpass){setShowpass(!showpass)};    SetPassword(e.target.value)}}
             fullWidth
           />
+
+          <span>
+            <input type="checkbox" name="showpassword" checked={showpass} onChange={() => setShowpass(!showpass)}/> <label>Show Password</label>
+          </span>
+          
 
           <Button variant="primary" onClick={handleLogin}>
             Login

@@ -11,6 +11,7 @@ const Intropage = () => {
       <div
         style={{
           fontFamily: "monospace",
+          animation: 'slideUp 1s ease-out'
         }}
       >
         <header
