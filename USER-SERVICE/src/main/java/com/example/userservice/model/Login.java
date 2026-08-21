@@ -63,9 +63,9 @@ public class Login {
 	
 	private LocalDateTime lastLoginAt;
 	
-	@OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
-	@ToString.Exclude
-	private List<AddressDetails> address;
+//	@OneToMany(mappedBy = "login", cascade = CascadeType.ALL)
+//	@ToString.Exclude
+//	private List<AddressDetails> address;
 	
 	public Login() {
 		System.out.println("Calling login constructor");

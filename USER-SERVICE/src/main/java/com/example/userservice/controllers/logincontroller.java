@@ -29,7 +29,8 @@ import jakarta.validation.Valid;
 
 @RestController
 @Validated
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:5173"})
+
 public class logincontroller {
 
 	@Autowired
@@ -45,13 +46,13 @@ public class logincontroller {
 		System.out.println("logindets::" + logindets);
 
 		if (logindets == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+			return ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseCreator("Error in fetch login details", HttpStatus.NOT_FOUND.value()));
 		}
 		
 		
 		if(!logindets.get().equalsIgnoreCase("Login successfully")) {
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ResponseCreator(logindets.get(), HttpStatus.FORBIDDEN.value()));
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(logindets.get(), HttpStatus.FORBIDDEN.value()));
 		}
 		
 
@@ -66,11 +67,16 @@ public class logincontroller {
 		Optional<String> reponse = loginservice.createNewUser(Login);
 
 		if (reponse == null) {
-			ResponseEntity.status(HttpStatus.NOT_FOUND)
+			ResponseEntity.status(HttpStatus.OK)
 					.body(new ResponseCreator("Error while creating user", HttpStatus.NOT_FOUND.value()));
+		} else if(!reponse.get().contains("success")) {
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(reponse.get(), HttpStatus.FOUND.value()));
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(reponse.get(), HttpStatus.OK.value()));
 		}
+		
+		return null;
 
-		return ResponseEntity.status(HttpStatus.OK).body(new ResponseCreator(reponse.get(), HttpStatus.OK.value()));
 	}
 
 	

@@ -4,11 +4,15 @@ import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { TextField, Grid } from "@mui/material";
 import Card from "react-bootstrap/Card";
+import Axios from 'axios'
+import {FourSquare} from 'react-loading-indicators'
 
 const Loginpage = () => {
   let [username, SetUsername] = useState("");
   let [password, SetPassword] = useState("");
+  let [isLoading, setIsLoading] = useState(false)
   let navigate = useNavigate("");
+  let [showpass , setShowpass] = useState(false)
 
   // useEffect(() => {console.log("Getting printed on every rended");
   // })
@@ -21,7 +25,8 @@ const Loginpage = () => {
     console.log("Getting printed on Username Change");
   }, [username]);
 
-  let handleLogin = () => {
+  let handleLogin =  async () => {
+
     if (username === "" || password === "") {
       Swal.fire({
         title: "Username and Password is mandatory",
@@ -31,21 +36,85 @@ const Loginpage = () => {
       return;
     }
 
-    Swal.fire({
-      title: "Logged in successfully",
+    setIsLoading(true)
+
+    try{
+
+      const response = await Axios.get("http://localhost:8081/user/verifylogin", {
+      headers: {
+        "username": username,
+        "X-Password": password
+      }
+    });
+
+    console.log(response.data);
+    
+    if(response.data.statusCode == 200){
+      Swal.fire({
+      title: response.data.response,
       icon: "success",
       draggable: true,
     });
-    navigate(`/Intropage/${username}`);
+      navigate(`/Intropage/${username}`);
+    } else {
+
+      Swal.fire({
+      title: response.data.response,
+      icon: "error",
+      draggable: true,
+    });
+
+    }
+       
+    } catch( error){
+      Swal.fire({
+      title: error.message,
+      icon: "error",
+      draggable: true,
+    });
+
+    // navigate(`/Intropage/${username}`);
+    
+    } finally{
+      setIsLoading(false)
+    }
+
+    
   };
 
-  let loginCard = {display : "flex", flexDirection:'column' ,width : '30%',border : '1px solid black',padding : '30px', gap : '20px'}
+  let loginCard = {display : "flex", flexDirection:'column' ,width : '27%',border : '2px solid black',padding : '30px', gap : '20px', backgroundColor : 'White',animation: 'slideUp 1s ease-out'}
 
   return (
-    
-      <div style={{display:'flex',justifyContent:'center',alignItems : 'center',height: '90vh'}}>
+    <>
+      {isLoading && (
+        <div className="loader-overlay"
+          // style={{
+          //   display: "flex",
+          //   justifyContent: "center",
+          //   alignItems: "center",
+          //   height: "100vh",
+          // }}
+        >
+          <FourSquare
+            color="#32cd32"
+            size="large"
+            text="Loading..."
+            textColor=""
+            style={{ display: "flex", justifyContent: "center" }}
+          />
+        </div>
+      )}
 
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "90vh",
+        }}
+      >
         <form style={loginCard}>
+          <h4 style={{ textAlign: "Center" }}>Login</h4>
           <TextField
             name="username"
             label="Username"
@@ -58,22 +127,41 @@ const Loginpage = () => {
           <TextField
             name="password"
             label="Password"
-            type="password"
+            type={showpass ? "text" : "password"}
             variant="outlined"
             value={password}
-            onChange={(e) => SetPassword(e.target.value)}
+            onChange={(e) => { if(showpass){setShowpass(!showpass)};    SetPassword(e.target.value)}}
             fullWidth
           />
+
+          <span>
+            <input type="checkbox" name="showpassword" checked={showpass} onChange={() => setShowpass(!showpass)}/> <label>Show Password</label>
+          </span>
+          
 
           <Button variant="primary" onClick={handleLogin}>
             Login
           </Button>
-          <h4>Create new account</h4>
-          <Button as={Link} to="/Signinpage" variant="primary">
-            Signin
-          </Button>
+
+          <footer
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
+            <label>
+              {" "}
+              <b>
+                Dont have account?{" "}
+                <Link to="/Signinpage">Create new account</Link>
+              </b>
+            </label>
+          </footer>
         </form>
       </div>
+    </>
   );
 };
 

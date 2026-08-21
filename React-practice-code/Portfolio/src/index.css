@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+
+@layer components{
+
+    .body-bg{
+        @apply bg-[#F8FAFC]
+    }
+
+    h1,h2,h3,h4,h5,h6{
+        @apply !text-[#0F172A]
+    }
+
+    p{
+       @apply text-[#475569] font-sans md:text-[18px]
+    }
+
+    li{
+        @apply text-[#475569] font-sans font-bold
+    }
+}
