@@ -18,21 +18,21 @@ const Contact = () => {
 
 
   return (
-    <div className="Contact-Div body-bg">
+    <div className="Contact-Div body-bg min-h-screen">
       <center>
         <h1 style={{ padding: "60px" }}>Contact Me</h1>
       </center>
 
-      <section>
-        <p style={{fontSize: '20px'}}>
+      <section className='flex flex-col items-center gap-8 px-4 pb-10'>
+        <p className='w-full md:w-[80%] text-base md:text-[20px]'>
           I'm open to opportunities, collaborations, and discussions related to
           Java, Spring Boot, and Full Stack Development.
         </p>
 
-        <Card  className='!border-1 !border-gray-300 !rounded-2xl' style={{ width: "30rem", padding : '10px 40px'}}>
+        <Card  className='border !border-gray-300 !rounded-2xl w-full md:w-[30rem]'>
           <Card.Body>
             <center>
-                <Card.Title>Contact information</Card.Title>
+                <Card.Title className='text-center mb-5'>Contact information</Card.Title>
             </center>
             
             <Card.Text>📧 Email : harrisfernando30@gmail.com</Card.Text>
@@ -41,12 +41,12 @@ const Contact = () => {
           </Card.Body>
         </Card>
 
-        <Card  className='!border-1 !border-gray-300 !rounded-2xl' style={{ width: "30rem" }}>
+        <Card  className='!border !border-gray-300 !rounded-2xl w-full md:w-[30rem]'>
           <Card.Body
-            style={{ display: "flex", flexDirection: "column", gap: "30px" }}
+            className="flex flex-col gap-8"
           >
             <center>
-                <Card.Title>Contact form</Card.Title>
+                <Card.Title className='text-center'>Contact form</Card.Title>
             </center>
             
             <TextField id="standard-basic" label="Name" variant="standard" />

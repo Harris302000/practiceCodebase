@@ -8,12 +8,10 @@ const Home = () => {
     <div className="Home-Div body-bg min-h-screen">
       <section className="flex-col md:flex-row">
         <div className=" w-[90%] md:w-[70%] flex flex-col md:justify-center items-center md:h-[92vh]" 
-        // style={{ width: "70%",height : '80vh',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}
         >
           <h2 >Hi, I'm Agnes Harris Fernando</h2>
           <h4 >Java Full Stack Developer</h4>
-          <p className="w-[90%] md:w-[70%] py-[40px]" 
-          // style={{width : '70%',padding: '40px 0px'}}
+          <p className="w-[90%] md:w-[70%] py-[40px]"
           >
             I’m a Java Developer with 4+ years of experience, primarily in the
             banking domain. I have strong experience in Core Java, Spring Boot,
