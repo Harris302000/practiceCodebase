@@ -10,7 +10,7 @@ const Projects = () => {
             </div>);
 
   return (
-    <div className="Projects-Div">
+    <div className="Projects-Div body-bg">
       <center>
         <h1 style={{ padding: "60px" }}>Projects</h1>
       </center>

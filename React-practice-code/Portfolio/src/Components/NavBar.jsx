@@ -9,7 +9,7 @@ import Home from './Home';
 function NavBar() {
   return (
     <>
-      <Navbar bg="success" data-bs-theme="dark" expand="lg" >
+      <Navbar className='bg-[#0F172A]' data-bs-theme="dark" expand="lg" >
         <Container>
           <Navbar.Brand>Agnes Harris Fernando</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

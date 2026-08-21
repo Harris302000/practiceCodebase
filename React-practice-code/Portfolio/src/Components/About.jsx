@@ -3,12 +3,12 @@ import Button from "react-bootstrap/Button";
 
 const About = () => {
   return (
-    <div className="About-Div">
+    <div className="About-Div body-bg">
       <section>
         <h1 style={{ padding: "60px" }}>About Me</h1>
 
-        <div style={{ display: "flex" }}>
-          <div style={{ width: "65%" }}>
+        <div className='flex flex-col md:flex-row'>
+          <div className='w-[100%] md:w-[65%]'>
             <center>
               <h5>Professional Summary</h5>
             </center>

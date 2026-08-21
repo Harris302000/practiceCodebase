@@ -15,7 +15,7 @@ const Skills = () => {
   };
 
   return (
-    <div className="Skills-Div">
+    <div className="Skills-Div h-[92vh] body-bg">
       <section>
         <center>
           <h1 style={{ padding: "60px" }}>Skills & Technologies</h1>
@@ -24,15 +24,18 @@ const Skills = () => {
             style={{
               width: "70%",
               display: "grid",
-              gridTemplateColumns: 'repeat(2, 1fr)',
+              // gridTemplateColumns: 'repeat(2, 1fr)',
               gap: "20px",
               justifyContent: "center",
               alignItems : 'center'
             }}
+
+            className="grid-cols-1 md:grid-cols-2"
           >
             {Object.entries(skills).map(([category, skillset], index) => {
               return (
-                <Card style={{ width: "50%" }} key={index}>
+                <div className="flex justify-center">
+                  <Card className="w-[100%] md:w-[50%] underline" key={index}>
                   <Card.Body>
                     <Card.Title>
                       {category.replaceAll("_", " ").replace("And", "&")}
@@ -41,12 +44,14 @@ const Skills = () => {
                     {skillset.map((skill) => {
                       return (
                         <Card.Text>
-                          <Badge bg="primary">{skill}</Badge>
+                          <Badge className="w-[45%] !bg-blue-900">{skill}</Badge>
                         </Card.Text>
                       );
                     })}
                   </Card.Body>
                 </Card>
+                </div>
+                
               );
             })}
           </div>

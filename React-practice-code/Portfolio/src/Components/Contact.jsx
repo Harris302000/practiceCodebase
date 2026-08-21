@@ -18,7 +18,7 @@ const Contact = () => {
 
 
   return (
-    <div className="Contact-Div">
+    <div className="Contact-Div body-bg">
       <center>
         <h1 style={{ padding: "60px" }}>Contact Me</h1>
       </center>
@@ -29,7 +29,7 @@ const Contact = () => {
           Java, Spring Boot, and Full Stack Development.
         </p>
 
-        <Card style={{ width: "30rem", padding : '10px 40px'}}>
+        <Card  className='!border-1 !border-gray-300 !rounded-2xl' style={{ width: "30rem", padding : '10px 40px'}}>
           <Card.Body>
             <center>
                 <Card.Title>Contact information</Card.Title>
@@ -41,7 +41,7 @@ const Contact = () => {
           </Card.Body>
         </Card>
 
-        <Card style={{ width: "30rem" }}>
+        <Card  className='!border-1 !border-gray-300 !rounded-2xl' style={{ width: "30rem" }}>
           <Card.Body
             style={{ display: "flex", flexDirection: "column", gap: "30px" }}
           >
