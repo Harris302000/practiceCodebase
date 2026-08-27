@@ -37,7 +37,7 @@ const Projects = () => {
               business requirements, integrated APIs, worked with database
               operations, and collaborated with BA and QA teams.
             </Card.Text>
-            {buttons}
+            {/* {buttons} */}
           </Card.Body>
         </Card>
 
@@ -59,7 +59,7 @@ const Projects = () => {
               calculation logic, handled user input and validation, and created
               the responsive UI using React components and state management.
             </Card.Text>
-            {buttons}
+            {/* {buttons} */}
           </Card.Body>
         </Card>
 
@@ -86,7 +86,7 @@ const Projects = () => {
               with the backend, and used JPA/Hibernate to persist task data in
               the database.
             </Card.Text>
-            {buttons}
+            {/* {buttons} */}
           </Card.Body>
         </Card>
 
@@ -109,7 +109,7 @@ const Projects = () => {
               arithmetic operations using JavaScript, and handled user
               interactions and input dynamically.
             </Card.Text>
-            {buttons}
+            {/* {buttons} */}
           </Card.Body>
         </Card>
 
@@ -138,7 +138,7 @@ const Projects = () => {
               and handled user and application data persistence using
               JPA/Hibernate and PostgreSQL.
             </Card.Text>
-            {buttons}
+            {/* {buttons} */}
           </Card.Body>
         </Card>
       </div>
