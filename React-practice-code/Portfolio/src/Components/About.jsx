@@ -1,7 +1,19 @@
 import React from 'react'
 import Button from "react-bootstrap/Button";
+import resume from '../assets/Files/Agnes_Harris_Fernando_JFS_Resume.pdf'
 
 const About = () => {
+
+  const downloadResume = () => {
+    const link = document.createElement("a");
+
+    link.href = resume;
+    link.download = "Agnes_Harris_Fernando_JFS_Resume.pdf";
+
+    link.click();
+};
+
+
   return (
     <div className="About-Div body-bg">
       <section className='pt-[60px]'>
@@ -69,6 +81,7 @@ const About = () => {
           variant="primary"
           style={{ margin: "30px 0px" }}
           className="transition-all hover:scale-105 hover:shadow-lg"
+          onClick={downloadResume}
         >
           Download Resume
         </Button>
