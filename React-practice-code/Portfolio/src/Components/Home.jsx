@@ -8,7 +8,7 @@ const Home = () => {
     <div className="Home-Div body-bg min-h-screen">
       <section className="flex-col md:flex-row">
         <div className=" w-[90%] md:w-[70%] flex flex-col md:justify-center items-center md:h-[92vh]">
-          <h2>Hi, I'm Agnes Harris Fernando</h2>
+          <h2 className=" !text-[20px] md:!text-[32px]">Hi, I'm Agnes Harris Fernando</h2>
           <h4>Java Full Stack Developer</h4>
           <p>Java • Spring Boot • React • REST APIs</p>
           <p className="w-[90%] md:w-[70%] py-[40px]">

@@ -7,8 +7,8 @@ const About = () => {
       <section className='pt-[60px]'>
         {/* <h1 style={{ padding: "60px" }}>About Me</h1> */}
 
-        <div className="flex flex-col md:flex-row">
-          <div className="w-[100%] md:w-[65%] border-2 border-blue-950 rounded-2xl md:mr-5">
+        <div className="flex flex-col md:flex-row gap-[20px]">
+          <div className="w-[100%] md:w-[65%] border-2 border-blue-950 rounded-2xl  ">
             <center>
               <h5 className="pt-3 m-0">Professional Summary</h5>
             </center>
