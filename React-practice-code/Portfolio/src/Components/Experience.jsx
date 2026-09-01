@@ -5,7 +5,7 @@ const Experience = () => {
   return (
     <div className="Expirence-Div h-[92vh] body-bg">
       <center>
-        <h1 style={{ padding: "60px" }}>Experience</h1>
+        <h1 style={{ padding: "30px" }}>Experience</h1>
       </center>
 
       <Accordion defaultActiveKey="">

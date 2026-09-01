@@ -4,6 +4,33 @@ import Card from "react-bootstrap/Card";
 import Badge from 'react-bootstrap/Badge';
 
 const Skills = () => {
+
+  let logo = (categ) => {
+    console.log("categ::"+categ);
+    
+    switch (categ) {
+      case 'Backend':
+        
+        return <span>⚙️ Backend</span>;
+      case 'Frontend':
+        
+        return <span>⚛️ Frontend</span>;
+      case 'Database':
+        
+        return <span>🗄️ Database</span>;
+      
+      case 'Tools_And_Platforms':
+        
+        return <span>🛠️ Tools & Platforms</span>;
+    
+      default:
+        break;
+    }
+
+
+  }
+
+
   const skills = {
     Backend: ["Java", "Spring Boot", "REST APIs", "Microservices"],
 
@@ -15,11 +42,12 @@ const Skills = () => {
   };
 
   return (
-    <div className="Skills-Div h-[92vh] body-bg">
+    <div className="Skills-Div  body-bg">
       <section>
         <center>
-          <h1 style={{ padding: "60px" }}>Skills & Technologies</h1>
-
+          <h1 style={{ padding: "20px 60px" }}>Skills & Technologies</h1>
+          <p className="pb-[40px]">Technologies and tools I use to build reliable,
+             scalable applications.</p>
           <div
             style={{
               width: "70%",
@@ -35,23 +63,27 @@ const Skills = () => {
             {Object.entries(skills).map(([category, skillset], index) => {
               return (
                 <div className="flex justify-center">
-                  <Card className="w-[100%] md:w-[50%] underline" key={index}>
-                  <Card.Body>
-                    <Card.Title>
-                      {category.replaceAll("_", " ").replace("And", "&")}
-                    </Card.Title>
+                  <Card
+                    className="w-[100%] md:w-[50%] underline !bg-[#1E293B] hover:scale-105 transition-all duration-500"
+                    key={index}
+                  >
+                    <Card.Body>
+                      <Card.Title className="text-white pb-[20px] m-0">
+                        {logo(category)}
+                      </Card.Title>
 
-                    {skillset.map((skill) => {
-                      return (
-                        <Card.Text>
-                          <Badge className="w-[45%] !bg-blue-900">{skill}</Badge>
-                        </Card.Text>
-                      );
-                    })}
-                  </Card.Body>
-                </Card>
+                      {skillset.map((skill) => {
+                        return (
+                          <Card.Text>
+                            <Badge className="w-[70%] !bg-blue-900  hover:scale-110 hover:!bg-blue-600 !px-4 !py-2 !rounded-full">
+                              📖 {skill}
+                            </Badge>
+                          </Card.Text>
+                        );
+                      })}
+                    </Card.Body>
+                  </Card>
                 </div>
-                
               );
             })}
           </div>
