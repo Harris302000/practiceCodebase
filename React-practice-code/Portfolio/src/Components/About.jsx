@@ -4,13 +4,13 @@ import Button from "react-bootstrap/Button";
 const About = () => {
   return (
     <div className="About-Div body-bg">
-      <section>
-        <h1 style={{ padding: "60px" }}>About Me</h1>
+      <section className='pt-[60px]'>
+        {/* <h1 style={{ padding: "60px" }}>About Me</h1> */}
 
-        <div className='flex flex-col md:flex-row'>
-          <div className='w-[100%] md:w-[65%]'>
+        <div className="flex flex-col md:flex-row">
+          <div className="w-[100%] md:w-[65%] border-2 border-blue-950 rounded-2xl md:mr-5">
             <center>
-              <h5>Professional Summary</h5>
+              <h5 className="pt-3 m-0">Professional Summary</h5>
             </center>
 
             <p>
@@ -40,24 +40,39 @@ const About = () => {
             </p>
           </div>
 
-          <div style={{ flex: "1",padding:'20px 40px' }}>
+          <div
+            style={{ flex: "1", padding: "20px 40px" }}
+            className="border-2 border-blue-950 rounded-2xl"
+          >
             <center>
               <h5>Professional highlights</h5>
             </center>
 
-            <ul style={{display:'flex',flexDirection:'column',padding: '10px 40px',gap:'10px'}}>
-              <li>4+ Years Experience</li>
-              <li>Java & Spring Boot</li>
-              <li>React.js</li>
-              <li>BFSI / Banking Domain</li>
-              <li>REST APIs & Microservices</li>
-              <li>SQL & Database</li>
+            <ul id='pro-highlights-li'
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "10px 40px",
+                gap: "10px",
+              }}
+            >
+              <li>⚡ 4+ Years Experience</li>
+              <li>☕ Java & Spring Boot</li>
+              <li>⚛️ React.js</li>
+              <li>🏦 BFSI / Banking Domain</li>
+              <li>🔗 REST APIs & Microservices</li>
+              <li>🗄️ SQL & Database</li>
             </ul>
           </div>
         </div>
-        <Button variant='primary' style={{margin:'30px 0px'}}>Download Resume</Button>
+        <Button
+          variant="primary"
+          style={{ margin: "30px 0px" }}
+          className="transition-all hover:scale-105 hover:shadow-lg"
+        >
+          Download Resume
+        </Button>
       </section>
-      
     </div>
   );
 }

@@ -1,5 +1,6 @@
 .Home-Div, .About-Div,.Skills-Div, .Projects-Div, .Expirence-Div,.Contact-Div{
  padding: 20px;
+
   
 }
 
@@ -9,6 +10,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+   animation: fadeInSide 1s ease-out;
   
 }
 
@@ -19,6 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  animation: fadeInSide 2s ease-out;
   
 }
 
@@ -38,4 +41,49 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
+}
+
+
+
+.Skills-Div section, .Projects-Div section{
+  animation: fadeInUp 2s ease-out;
+}
+
+
+@keyframes fadeInUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeInSide {
+
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#main-img {
+    animation: fadeInSide 1s ease-out 0.3s;
+    animation-fill-mode: backwards;
+}
+
+
+#pro-highlights-li li:hover{
+
+  transform: translateX(10px);
 }

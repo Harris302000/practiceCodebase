@@ -29,8 +29,8 @@ const Contact = () => {
           Java, Spring Boot, and Full Stack Development.
         </p>
 
-        <Card  className='border !border-gray-300 !rounded-2xl w-full md:w-[30rem]'>
-          <Card.Body>
+        <Card  className='border !border-gray-300 !rounded-2xl w-full md:w-[30rem] !bg-[#1E293B]'>
+          <Card.Body className='!text-[#6366F1]'>
             <center>
                 <Card.Title className='text-center mb-5'>Contact information</Card.Title>
             </center>
@@ -41,15 +41,15 @@ const Contact = () => {
           </Card.Body>
         </Card>
 
-        <Card  className='!border !border-gray-300 !rounded-2xl w-full md:w-[30rem]'>
+        <Card  className='!border !border-gray-300 !rounded-2xl w-full md:w-[30rem] !bg-gray-300'>
           <Card.Body
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-8 "
           >
             <center>
                 <Card.Title className='text-center'>Contact form</Card.Title>
             </center>
             
-            <TextField id="standard-basic" label="Name" variant="standard" />
+            <TextField id="standard-basic" label="Name" variant="standard"/>
             <TextField id="standard-basic" label="Email" variant="standard" />
             <TextField id="standard-basic" label="Subject" variant="standard" />
             <TextField id="standard-basic" label="Message" variant="standard" />
