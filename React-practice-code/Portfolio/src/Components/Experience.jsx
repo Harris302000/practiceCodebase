@@ -3,7 +3,7 @@ import Accordion from 'react-bootstrap/Accordion'
 
 const Experience = () => {
   return (
-    <div className="Expirence-Div h-[92vh] body-bg">
+    <div className="Expirence-Div md:h-[92vh] body-bg">
       <center>
         <h1 style={{ padding: "30px" }}>Experience</h1>
       </center>
@@ -19,14 +19,14 @@ const Experience = () => {
           <Accordion.Body>
             <b>Experience:</b> 4+ Years
           </Accordion.Body>
-          <Accordion.Body>
+          <Accordion.Body className='text-[17px] font-serif'>
             As a Java Developer, I am responsible for developing and maintaining
             enterprise-level backend applications using Core Java and Spring
             Boot. I work on implementing business requirements, developing
             backend services, and building REST APIs to support application
             workflows and system integrations.
           </Accordion.Body>
-          <Accordion.Body>
+          <Accordion.Body className='text-[17px] font-serif'>
             My experience includes working with REST and SOAP integrations,
             developing and executing SQL queries, and performing
             database-related operations using relational databases. I have
@@ -34,7 +34,7 @@ const Experience = () => {
             domain, supporting lending workflows and ensuring smooth end-to-end
             processing.
           </Accordion.Body>
-          <Accordion.Body>
+          <Accordion.Body className='text-[17px] font-serif'>
             I have worked with OmniApp and BPMN-based workflows to implement
             application processes and validations. I also collaborate closely
             with Business Analysts and QA teams to understand requirements,
