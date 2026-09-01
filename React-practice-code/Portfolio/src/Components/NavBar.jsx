@@ -11,7 +11,7 @@ function NavBar() {
     <>
       <Navbar className="bg-[#0F172A]" data-bs-theme="dark" expand="lg">
         <Container>
-          <Navbar.Brand className='!text-3xl font-semibold font-mono'>Agnes Harris Fernando</Navbar.Brand>
+          <Navbar.Brand className=' md:!text-3xl font-semibold font-mono'>Agnes Harris Fernando</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
