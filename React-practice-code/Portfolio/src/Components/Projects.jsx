@@ -4,10 +4,46 @@ import Card from 'react-bootstrap/Card';
 
 const Projects = () => {
 
-    let buttons = (<div style={{display:'flex',gap : '20px'}}>
-                <Button variant="primary">View Project</Button>
-                <Button variant="primary">Github</Button>
-            </div>);
+    const BMI_CAL = 'BMI-Calculator'
+    const CALCULATOR = 'Calculator'
+    const E_COMM = 'E-Commerce Application'
+    const TODO_APP = 'To Do Application'
+
+
+    let openApplication =  (app) => {      
+      switch (app) {
+        case BMI_CAL:
+            window.open('https://harrisfdo-bmi-calculator.vercel.app/', '_blank');
+        break;
+
+        case CALCULATOR:
+            window.open('https://harrisfdo-calculator.vercel.app/', '_blank');
+        break;
+
+        case E_COMM:
+            window.open('https://harrisfdo-e-commerce.vercel.app/', '_blank');
+        break;
+
+        case TODO_APP:
+            window.open('https://harrisfdo-todo-app.vercel.app/', '_blank');
+        break;
+      
+        default:
+          break;
+      }
+
+    }
+
+
+    let buttons = (application) => {  return (<div style={{display:'flex',gap : '20px'}}>
+                <Button variant="primary" onClick={() => openApplication(application)}>View Project</Button>
+                {/* <Button variant="primary">Github</Button> */}
+            </div>)};
+
+    // let buttons = (<div style={{display:'flex',gap : '20px'}}>
+    //             <Button variant="primary" >View Project</Button>
+    //             {/* <Button variant="primary">Github</Button> */}
+    //         </div>);
 
     // let buttons = (<div></div>);
 
@@ -49,7 +85,7 @@ const Projects = () => {
                 business requirements, integrated APIs, worked with database
                 operations, and collaborated with BA and QA teams.
               </Card.Text>
-              {buttons}
+              {/* {buttons} */}
             </Card.Body>
           </Card>
 
@@ -82,7 +118,7 @@ const Projects = () => {
                 created the responsive UI using React components and state
                 management.
               </Card.Text>
-              {buttons}
+              {buttons(BMI_CAL)}
             </Card.Body>
           </Card>
 
@@ -118,7 +154,7 @@ const Projects = () => {
                 frontend with the backend, and used JPA/Hibernate to persist
                 task data in the database.
               </Card.Text>
-              {buttons}
+              {buttons(TODO_APP)}
             </Card.Body>
           </Card>
 
@@ -150,7 +186,7 @@ const Projects = () => {
                 arithmetic operations using JavaScript, and handled user
                 interactions and input dynamically.
               </Card.Text>
-              {buttons}
+              {buttons(CALCULATOR)}
             </Card.Body>
           </Card>
 
@@ -188,7 +224,8 @@ const Projects = () => {
                 and handled user and application data persistence using
                 JPA/Hibernate and PostgreSQL.
               </Card.Text>
-              {buttons}
+              {buttons(E_COMM)}
+             
             </Card.Body>
           </Card>
         </div>
