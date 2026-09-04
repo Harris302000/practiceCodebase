@@ -22,7 +22,7 @@ import com.example.productservice.model.ToDoModel;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(value = "http://localhost:5174/")
+@CrossOrigin(value = {"http://localhost:5173/","http://localhost:5174/","https://harrisfdo-todo-app.vercel.app"})
 @RestController
 @RequestMapping("/Todo")
 public class TodoController {
